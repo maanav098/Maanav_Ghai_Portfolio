@@ -220,9 +220,9 @@ This project is open source and available under the [MIT License](LICENSE).
 ## 📞 Support
 
 For questions or support:
-- **Email**: maanav.ghai@example.com
+- **Email**: maanavghai1409@gmail.com
 - **LinkedIn**: [Maanav Ghai](https://linkedin.com/in/maanavghai)
-- **GitHub**: [maanavghai](https://github.com/maanavghai)
+- **GitHub**: [Maanav Ghai](https://github.com/maanav098)
 
 ---
 
