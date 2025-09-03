@@ -25,7 +25,7 @@ export function Contact() {
           {/* Contact Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
             <a
-              href="mailto:maanav.ghai@example.com"
+              href="mailto:maanavghai1409@gmail.com"
               className="btn-primary inline-flex items-center gap-2"
             >
               <Mail className="w-5 h-5" />
@@ -41,7 +41,7 @@ export function Contact() {
               LinkedIn
             </a>
             <a
-              href="https://github.com/maanavghai"
+              href="https://github.com/maanav098"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-secondary inline-flex items-center gap-2"
@@ -57,7 +57,7 @@ export function Contact() {
               Currently open to full-time roles and exciting project collaborations.
             </p>
             <p className="text-sm">
-              Based in India • Available for remote work worldwide
+              Based in India and UAE • Available for remote work worldwide
             </p>
           </div>
         </motion.div>

@@ -218,7 +218,7 @@ export function Hero() {
             className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
           >
             <motion.a
-              href="mailto:maanav.ghai@example.com"
+              href="mailto:maanavghai1409@gmail.com"
               className="btn-primary inline-flex items-center gap-2 group relative overflow-hidden"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

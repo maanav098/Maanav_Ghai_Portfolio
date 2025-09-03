@@ -80,7 +80,7 @@ export function Chatbot() {
     }
     
     if (input.includes('contact') || input.includes('email')) {
-      return "You can reach Maanav via email at maanav.ghai@example.com, LinkedIn, or GitHub. He's currently open to full-time roles and exciting project collaborations!"
+      return "You can reach Maanav via email at maanavghai1409@gmail.com, LinkedIn, or GitHub. He's currently open to full-time roles and exciting project collaborations!"
     }
     
     return "I'm here to help! Ask me about Maanav's skills, projects, experience, or how to get in touch. You can also explore the portfolio sections for detailed information."
