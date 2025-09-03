@@ -35,8 +35,8 @@ export const experiences: Experience[] = [
     company: 'Nucleus Software',
     position: 'Software Engineer Intern',
     location: 'Remote',
-    startDate: '2024-01',
-    endDate: '2024-06',
+    startDate: '2025-05',
+    endDate: '2025-08',
     description: [
       'Developed enterprise fintech applications for 12 financial clusters',
       'Built reconciliation systems handling Oracle databases with 1M+ records',
@@ -55,8 +55,8 @@ export const experiences: Experience[] = [
     company: 'Nagarro Mena LLC',
     position: 'Software Engineer Intern',
     location: 'Remote',
-    startDate: '2023-06',
-    endDate: '2023-12',
+    startDate: '2025-05',
+    endDate: '2025-07',
     description: [
       'Improved React application performance by 15% through code optimization',
       'Reduced application load time by 10% implementing lazy loading',
@@ -87,7 +87,7 @@ export const projects: Project[] = [
       'Responsive design optimized for all devices'
     ],
     tech: ['React', 'Flask', 'Redux', 'OAuth 2.0', 'Tailwind CSS', 'Python'],
-    github: 'https://github.com/maanavghai/smartsolve-ai',
+    github: 'https://github.com/maanav098/SmartSolve-AI',
     demo: 'https://smartsolve-ai.vercel.app'
   },
   {
@@ -104,7 +104,7 @@ export const projects: Project[] = [
       'Efficient query interface for financial data'
     ],
     tech: ['Tesseract OCR', 'Oracle DB', 'Python', 'Flask', 'SQL', 'OpenCV'],
-    github: 'https://github.com/maanavghai/nexpend'
+    github: 'https://github.com/maanav098/Nexpend-AI'
   },
   {
     id: 'crop-prediction',
@@ -120,14 +120,14 @@ export const projects: Project[] = [
       'Robust preprocessing pipeline'
     ],
     tech: ['XGBoost', 'LightGBM', 'GBDT', 'Python', 'Scikit-learn', 'Pandas', 'NumPy'],
-    github: 'https://github.com/maanavghai/crop-price-prediction'
+    github: 'https://github.com/maanav098/CropPricePrediction'
   }
 ]
 
 export const skills: Skill[] = [
   {
     category: 'Languages',
-    items: ['Python', 'Java', 'JavaScript', 'TypeScript', 'SQL', 'HTML/CSS']
+    items: ['Python', 'Java','C++', 'JavaScript', 'TypeScript', 'SQL', 'HTML/CSS']
   },
   {
     category: 'Frontend',
@@ -139,7 +139,7 @@ export const skills: Skill[] = [
   },
   {
     category: 'Data & ML',
-    items: ['XGBoost', 'LightGBM', 'GBDT', 'Scikit-learn', 'Pandas', 'NumPy']
+    items: ['XGBoost', 'LightGBM', 'Scikit-learn', 'Pandas', 'NumPy']
   },
   {
     category: 'Databases & Infrastructure',
