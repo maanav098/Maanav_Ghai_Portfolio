@@ -11,13 +11,14 @@ interface ProjectTileProps {
 
 export function ProjectTile({ project, index, onClick }: ProjectTileProps) {
   return (
-    <motion.div
+    <motion.button
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
       viewport={{ once: true }}
       onClick={onClick}
-      className="card p-6 cursor-pointer hover:shadow-lg transition-all duration-200 group"
+      type="button"
+  className="card p-6 text-left hover:shadow-lg transition-all duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
     >
       <div className="space-y-4">
         {/* Header */}
@@ -59,6 +60,6 @@ export function ProjectTile({ project, index, onClick }: ProjectTileProps) {
           </span>
         </div>
       </div>
-    </motion.div>
+    </motion.button>
   )
 }

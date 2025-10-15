@@ -68,7 +68,7 @@ export function Chatbot() {
     const input = userInput.toLowerCase()
     
     if (input.includes('skill') || input.includes('technology')) {
-      return "Maanav is proficient in React, Next.js, Python, Flask, and machine learning technologies like XGBoost and LightGBM. He has experience with Oracle databases, OWASP security practices, and building scalable applications."
+  return "Maanav is proficient in React, Next.js, Python, Flask, and machine learning technologies like XGBoost and LightGBM. He has experience with Oracle databases, OWASP security practices, and building scalable applications."
     }
     
     if (input.includes('project') || input.includes('work')) {
@@ -76,14 +76,14 @@ export function Chatbot() {
     }
     
     if (input.includes('experience') || input.includes('internship')) {
-      return "Maanav has interned at Nucleus Software (fintech apps, 1M+ records) and Nagarro (React optimization, 15% performance gain). He's worked on enterprise applications and performance optimization."
+  return "Maanav has interned at Nucleus Software (Noida, India, on-site/in-office, fintech apps, 1M+ records) and Nagarro (Dubai, UAE, on-site/in-office, React optimization, 15% performance gain). He's worked on enterprise applications and performance optimization."
     }
     
     if (input.includes('contact') || input.includes('email')) {
       return "You can reach Maanav via email at maanavghai1409@gmail.com, LinkedIn, or GitHub. He's currently open to full-time roles and exciting project collaborations!"
     }
     
-    return "I'm here to help! Ask me about Maanav's skills, projects, experience, or how to get in touch. You can also explore the portfolio sections for detailed information."
+  return "I'm here to help! Ask me about Maanav's skills, projects, experience, or how to get in touch. You can also explore the portfolio sections for detailed information."
   }
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -97,6 +97,7 @@ export function Chatbot() {
     <>
       {/* Chatbot Toggle Button */}
       <motion.button
+        data-chatbot
         onClick={() => setIsOpen(!isOpen)}
         className={cn(
           "fixed bottom-6 right-6 z-50 p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110",
@@ -134,7 +135,7 @@ export function Chatbot() {
             )}>
               <div className="flex items-center space-x-2">
                 <Bot className="w-5 h-5" />
-                <span className="font-semibold">Maanav's AI</span>
+                <span className="font-semibold">Maanav{"'"}s AI</span>
               </div>
               <button
                 onClick={() => setIsOpen(false)}

@@ -17,8 +17,8 @@ export function Hero() {
           className="absolute inset-0 opacity-5"
           style={{
             backgroundImage: `
-              linear-gradient(rgba(99, 102, 241, 0.1) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(99, 102, 241, 0.1) 1px, transparent 1px)
+              linear-gradient(${theme === 'dark' ? 'rgba(99, 102, 241, 0.1)' : 'rgba(169, 193, 163, 0.18)'} 1px, transparent 1px),
+              linear-gradient(90deg, ${theme === 'dark' ? 'rgba(99, 102, 241, 0.1)' : 'rgba(169, 193, 163, 0.18)'} 1px, transparent 1px)
             `,
             backgroundSize: '50px 50px'
           }}
@@ -35,7 +35,8 @@ export function Hero() {
         
         {/* Floating Geometric Shapes */}
         <motion.div
-          className="absolute top-20 left-20 w-32 h-32 border border-indigo-200/20 rounded-full"
+          className="absolute top-20 left-20 w-32 h-32 border rounded-full"
+          style={{ borderColor: theme === 'dark' ? 'rgba(124, 58, 237, 0.2)' : 'rgba(169, 193, 163, 0.35)' }}
           animate={{
             scale: [1, 1.5, 1],
             rotate: [0, 180, 360],
@@ -49,7 +50,12 @@ export function Hero() {
         />
         
         <motion.div
-          className="absolute bottom-20 right-20 w-24 h-24 bg-gradient-to-br from-cyan-200/10 to-purple-200/10 rounded-lg"
+          className="absolute bottom-20 right-20 w-24 h-24 rounded-lg"
+          style={{
+            background: theme === 'dark'
+              ? 'linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(124, 58, 237, 0.1))'
+              : 'linear-gradient(135deg, rgba(143, 185, 150, 0.18), rgba(169, 193, 163, 0.15))'
+          }}
           animate={{
             scale: [1, 1.3, 1],
             rotate: [0, -180, 0],
@@ -139,7 +145,7 @@ export function Hero() {
                   "w-full h-full flex items-center justify-center transition-all duration-500",
                   theme === 'dark'
                     ? "bg-gradient-to-br from-cyan-500 via-purple-600 to-pink-600"
-                    : "bg-gradient-to-br from-indigo-500 to-cyan-500"
+                    : "bg-gradient-to-br from-[#A9C1A3] via-[#8FB996] to-[#5A7D7C]"
                 )}>
                   <span className="relative z-10">MG</span>
                 </div>
@@ -172,7 +178,12 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-5xl md:text-6xl font-bold mb-4 relative"
           >
-            <span className="bg-gradient-to-r from-slate-900 via-indigo-600 to-cyan-600 dark:from-white dark:via-cyan-400 dark:to-purple-400 bg-clip-text text-transparent">
+            <span className={cn(
+              "bg-clip-text text-transparent",
+              theme === 'dark'
+                ? "bg-gradient-to-r from-white via-cyan-400 to-purple-400"
+                : "bg-gradient-to-r from-[#2F3E46] via-[#5A7D7C] to-[#8FB996]"
+            )}>
               Maanav Ghai
             </span>
             {/* Floating Star */}
@@ -234,8 +245,8 @@ export function Hero() {
             </motion.a>
             
             <motion.a
-              href="/resume.pdf"
-              download
+              href="/Maanav_Ghai.pdf"
+              download="Maanav_Ghai.pdf"
               className="btn-secondary inline-flex items-center gap-2 group"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -256,7 +267,11 @@ export function Hero() {
             {['React', 'Next.js', 'Python', 'Flask', 'AI'].map((tech, index) => (
               <motion.span
                 key={tech}
-                className="px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full border border-slate-200 dark:border-slate-700 hover:border-indigo-300 dark:hover:border-cyan-400 transition-all duration-200 cursor-default"
+                className="px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full border border-slate-200 dark:border-slate-700 transition-all duration-200 cursor-default"
+                style={{
+                  background: theme === 'dark' ? undefined : 'rgba(169, 193, 163, 0.18)',
+                  borderColor: theme === 'dark' ? undefined : 'rgba(169, 193, 163, 0.5)'
+                }}
                 whileHover={{ scale: 1.1, y: -2 }}
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}

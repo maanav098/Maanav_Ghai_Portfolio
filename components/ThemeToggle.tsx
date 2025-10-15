@@ -10,7 +10,7 @@ export function ThemeToggle() {
   const getThemeIcon = () => {
     switch (theme) {
       case 'light':
-        return <Sun className="w-4 h-4 text-slate-600" />
+        return <Sun className="w-4 h-4 text-[#5A7D7C]" />
       case 'dark':
         return <Zap className="w-4 h-4 text-cyan-400" /> // Using Zap for the glowing dark theme
       default:
@@ -21,12 +21,12 @@ export function ThemeToggle() {
   const getThemeColor = () => {
     switch (theme) {
       case 'light':
-        return 'bg-slate-200'
+        return 'bg-[#E3E9E2]'
       case 'dark':
         // Use the futuristic gradient for the new dark theme
         return 'bg-gradient-to-r from-cyan-500/30 to-purple-500/30'
       default:
-        return 'bg-slate-200'
+        return 'bg-[#E3E9E2]'
     }
   }
 

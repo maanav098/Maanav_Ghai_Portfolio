@@ -34,7 +34,7 @@ export const experiences: Experience[] = [
     id: 'nucleus',
     company: 'Nucleus Software',
     position: 'Software Engineer Intern',
-    location: 'Remote',
+    location: 'Noida, India (On-site/In-office)',
     startDate: '2025-05',
     endDate: '2025-08',
     description: [
@@ -54,7 +54,7 @@ export const experiences: Experience[] = [
     id: 'nagarro',
     company: 'Nagarro Mena LLC',
     position: 'Software Engineer Intern',
-    location: 'Remote',
+    location: 'Dubai, UAE (On-site/In-office)',
     startDate: '2025-05',
     endDate: '2025-07',
     description: [

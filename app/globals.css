@@ -33,15 +33,37 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-indigo-500 hover:bg-indigo-600 text-white font-medium px-6 py-3 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 shadow-sm hover:shadow-md;
+    @apply text-white font-medium px-6 py-3 rounded-lg transition-all duration-200 shadow-sm hover:shadow-md;
+    background: var(--color-primary);
+    border: 1px solid transparent;
+  }
+  .btn-primary:hover {
+    filter: brightness(0.95);
+  }
+  .btn-primary:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(138, 171, 145, 0.35);
   }
   
   .btn-secondary {
-    @apply bg-slate-50 hover:bg-slate-100 text-slate-700 font-medium px-6 py-3 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 border border-slate-200 hover:border-slate-300 shadow-sm hover:shadow-md;
+    @apply font-medium px-6 py-3 rounded-lg transition-all duration-200 shadow-sm hover:shadow-md;
+    background: rgba(169, 193, 163, 0.15);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+  }
+  .btn-secondary:hover {
+    background: rgba(169, 193, 163, 0.25);
+  }
+  .btn-secondary:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(138, 171, 145, 0.35);
   }
   
   .card {
-    @apply bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-200;
+    @apply rounded-2xl shadow-sm hover:shadow-lg transition-all duration-200;
+    background: var(--color-surface);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
   }
   
   .section-padding {
@@ -90,13 +112,13 @@
   }
 
   .hover-glow:hover {
-    box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+    box-shadow: 0 0 20px rgba(138, 171, 145, 0.35);
     transform: translateY(-2px);
   }
 
   /* Gradient text effect */
   .gradient-text {
-    background: linear-gradient(135deg, #6366F1, #06B6D4);
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -118,8 +140,8 @@
   }
 
   @keyframes pulse-glow {
-    from { box-shadow: 0 0 20px rgba(99, 102, 241, 0.3); }
-    to { box-shadow: 0 0 30px rgba(99, 102, 241, 0.6); }
+    from { box-shadow: 0 0 20px rgba(138, 171, 145, 0.3); }
+    to { box-shadow: 0 0 30px rgba(138, 171, 145, 0.5); }
   }
 }
 
@@ -160,8 +182,8 @@
   }
 
   @keyframes glow {
-    from { box-shadow: 0 0 20px rgba(99, 102, 241, 0.3); }
-    to { box-shadow: 0 0 30px rgba(99, 102, 241, 0.6); }
+    from { box-shadow: 0 0 20px rgba(138, 171, 145, 0.3); }
+    to { box-shadow: 0 0 30px rgba(138, 171, 145, 0.5); }
   }
 
   @keyframes slideUp {

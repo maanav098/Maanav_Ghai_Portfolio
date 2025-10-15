@@ -118,26 +118,40 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                 </div>
               </div>
 
-              {/* Interactive Demo Section */}
+              {/* Resource Links */}
               <div className="pt-4 border-t border-slate-200 dark:border-slate-700">
                 <h4 className="font-medium text-slate-900 dark:text-white mb-3">
-                  Interactive Demo
+                  Additional Resources
                 </h4>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                   {project.demo && (
-                                         <button className="flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-indigo-500 to-cyan-500 text-white rounded-lg hover:from-indigo-600 hover:to-cyan-600 transition-all duration-200 transform hover:scale-105">
-                       <Play className="w-4 h-4" />
-                       Live Demo
-                     </button>
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-indigo-500 to-cyan-500 text-white rounded-lg hover:from-indigo-600 hover:to-cyan-600 transition-all duration-200"
+                    >
+                      <Play className="w-4 h-4" />
+                      Live Demo
+                    </a>
                   )}
-                  <button className="flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-lg hover:from-green-700 hover:to-emerald-700 transition-all duration-200 transform hover:scale-105">
-                    <Code className="w-4 h-4" />
-                    Code Walkthrough
-                  </button>
-                  <button className="flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-orange-600 to-red-600 text-white rounded-lg hover:from-orange-700 hover:to-red-700 transition-all duration-200 transform hover:scale-105">
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-lg hover:from-green-700 hover:to-emerald-700 transition-all duration-200"
+                    >
+                      <Code className="w-4 h-4" />
+                      Code Walkthrough
+                    </a>
+                  )}
+                  <div className="flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-orange-600 to-red-600 text-white rounded-lg">
                     <BarChart3 className="w-4 h-4" />
-                    Performance Metrics
-                  </button>
+                    <span className="text-sm font-medium text-center">
+                      {project.impact[0] ?? 'Performance metrics are highlighted above.'}
+                    </span>
+                  </div>
                 </div>
               </div>
 
