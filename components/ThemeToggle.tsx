@@ -1,6 +1,6 @@
 'use client'
 
-import { Sun, Zap } from 'lucide-react'
+import { Sun, Moon } from 'lucide-react'
 import { useTheme } from '@/contexts/ThemeContext'
 import { cn } from '@/lib/utils'
 
@@ -10,9 +10,9 @@ export function ThemeToggle() {
   const getThemeIcon = () => {
     switch (theme) {
       case 'light':
-        return <Sun className="w-4 h-4 text-[#5A7D7C]" />
+        return <Sun className="w-4 h-4 text-gray-700" />
       case 'dark':
-        return <Zap className="w-4 h-4 text-cyan-400" /> // Using Zap for the glowing dark theme
+        return <Moon className="w-4 h-4 text-gray-200" />
       default:
         return <Sun className="w-4 h-4" />
     }
@@ -21,12 +21,11 @@ export function ThemeToggle() {
   const getThemeColor = () => {
     switch (theme) {
       case 'light':
-        return 'bg-[#E3E9E2]'
+        return 'bg-gray-200'
       case 'dark':
-        // Use the futuristic gradient for the new dark theme
-        return 'bg-gradient-to-r from-cyan-500/30 to-purple-500/30'
+        return 'bg-gray-700'
       default:
-        return 'bg-[#E3E9E2]'
+        return 'bg-gray-200'
     }
   }
 
@@ -45,14 +44,14 @@ export function ThemeToggle() {
     <button
       onClick={toggleTheme}
       className={cn(
-        "relative inline-flex h-10 w-20 items-center rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2",
+        "relative inline-flex h-10 w-20 items-center rounded-full transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-[#0071e3] focus:ring-offset-2",
         getThemeColor()
       )}
       aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
     >
       <span
         className={cn(
-          "inline-flex h-8 w-8 items-center justify-center rounded-full bg-white shadow-sm transition-transform duration-200",
+          "inline-flex h-8 w-8 items-center justify-center rounded-full bg-white dark:bg-gray-900 shadow-md transition-transform duration-300 ease-in-out",
           getTranslateX()
         )}
       >

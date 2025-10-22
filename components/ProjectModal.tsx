@@ -30,50 +30,45 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ duration: 0.2 }}
-            className={cn(
-              "rounded-2xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto",
-                             theme === 'dark' 
-                 ? "bg-black border border-cyan-500/30" 
-                 : "bg-white dark:bg-slate-900"
-            )}
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="bg-white dark:bg-black rounded-3xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto border border-gray-200 dark:border-gray-800"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="flex items-center justify-between p-6 border-b border-slate-200 dark:border-slate-700">
+            <div className="flex items-center justify-between p-8 border-b border-gray-200 dark:border-gray-800">
               <div>
-                <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
+                <h2 className="text-3xl font-semibold text-gray-900 dark:text-white tracking-tight">
                   {project.title}
                 </h2>
-                <p className="text-slate-600 dark:text-slate-400 mt-1">
+                <p className="text-gray-600 dark:text-gray-400 mt-2 text-lg">
                   {project.subtitle}
                 </p>
               </div>
               <button
                 onClick={onClose}
-                className="p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors duration-200"
+                className="p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors duration-200 rounded-full hover:bg-gray-100 dark:hover:bg-gray-900"
               >
                 <X className="w-6 h-6" />
               </button>
             </div>
 
             {/* Content */}
-            <div className="p-6 space-y-6">
+            <div className="p-8 space-y-8">
               {/* Problem & Solution */}
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid md:grid-cols-2 gap-8">
                 <div>
-                  <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-3">
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
                     Problem
                   </h3>
-                  <p className="text-slate-600 dark:text-slate-300">
+                  <p className="text-gray-600 dark:text-gray-300 text-base leading-relaxed">
                     {project.problem}
                   </p>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-3">
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
                     Solution
                   </h3>
-                  <p className="text-slate-600 dark:text-slate-300">
+                  <p className="text-gray-600 dark:text-gray-300 text-base leading-relaxed">
                     {project.solution}
                   </p>
                 </div>
@@ -81,20 +76,20 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 
               {/* Role & Impact */}
               <div>
-                <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-3">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
                   My Role
                 </h3>
-                <p className="text-slate-600 dark:text-slate-300 mb-4">
+                <p className="text-gray-600 dark:text-gray-300 mb-6 text-base leading-relaxed">
                   {project.role}
                 </p>
                 
-                <h4 className="font-medium text-slate-900 dark:text-white mb-2">
+                <h4 className="font-semibold text-gray-900 dark:text-white mb-4 text-lg">
                   Key Impact:
                 </h4>
-                <ul className="space-y-2">
+                <ul className="space-y-3">
                   {project.impact.map((item, i) => (
-                    <li key={i} className="flex items-start gap-2 text-slate-600 dark:text-slate-300">
-                      <span className="text-indigo-500 mt-2 flex-shrink-0">•</span>
+                    <li key={i} className="flex items-start gap-3 text-gray-600 dark:text-gray-300 text-base">
+                      <span className="text-[#0071e3] dark:text-[#2997ff] mt-1 flex-shrink-0">•</span>
                       <span>{item}</span>
                     </li>
                   ))}
@@ -103,14 +98,14 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 
               {/* Tech Stack */}
               <div>
-                <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-3">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
                   Technologies Used
                 </h3>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-3">
                   {project.tech.map((tech) => (
                     <span
                       key={tech}
-                      className="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm rounded-full border border-slate-200 dark:border-slate-700"
+                      className="px-4 py-2 bg-gray-50 dark:bg-gray-900 text-gray-700 dark:text-gray-300 text-sm font-medium rounded-full border border-gray-200 dark:border-gray-800"
                     >
                       {tech}
                     </span>
@@ -118,66 +113,29 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                 </div>
               </div>
 
-              {/* Resource Links */}
-              <div className="pt-4 border-t border-slate-200 dark:border-slate-700">
-                <h4 className="font-medium text-slate-900 dark:text-white mb-3">
-                  Additional Resources
-                </h4>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                  {project.demo && (
-                    <a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-indigo-500 to-cyan-500 text-white rounded-lg hover:from-indigo-600 hover:to-cyan-600 transition-all duration-200"
-                    >
-                      <Play className="w-4 h-4" />
-                      Live Demo
-                    </a>
-                  )}
-                  {project.github && (
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-lg hover:from-green-700 hover:to-emerald-700 transition-all duration-200"
-                    >
-                      <Code className="w-4 h-4" />
-                      Code Walkthrough
-                    </a>
-                  )}
-                  <div className="flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-orange-600 to-red-600 text-white rounded-lg">
-                    <BarChart3 className="w-4 h-4" />
-                    <span className="text-sm font-medium text-center">
-                      {project.impact[0] ?? 'Performance metrics are highlighted above.'}
-                    </span>
-                  </div>
-                </div>
-              </div>
-
               {/* Links */}
-              <div className="flex flex-wrap gap-3 pt-4 border-t border-slate-200 dark:border-slate-700">
+              <div className="flex flex-wrap gap-4 pt-6 border-t border-gray-200 dark:border-gray-800">
                 {project.github && (
                   <a
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg hover:bg-slate-800 dark:hover:bg-slate-100 transition-colors duration-200"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300 font-medium"
                   >
-                    <Github className="w-4 h-4" />
+                    <Github className="w-5 h-5" />
                     View Code
                   </a>
                 )}
                 {project.demo && (
-                                     <a
-                     href={project.demo}
-                     target="_blank"
-                     rel="noopener noreferrer"
-                     className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 transition-colors duration-200"
-                   >
-                     <ExternalLink className="w-4 h-4" />
-                     Live Demo
-                   </a>
+                  <a
+                    href={project.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-[#0071e3] dark:bg-[#2997ff] text-white rounded-full hover:bg-[#0077ed] dark:hover:bg-[#409cff] transition-all duration-300 font-medium"
+                  >
+                    <ExternalLink className="w-5 h-5" />
+                    Live Demo
+                  </a>
                 )}
               </div>
             </div>

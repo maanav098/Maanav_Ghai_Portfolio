@@ -5,44 +5,42 @@ import { skills } from '@/lib/data'
 
 export function Skills() {
   return (
-    <section id="skills" className="section-padding">
-      <div className="container-max">
+    <section id="skills" className="bg-white dark:bg-black">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-32 sm:py-40">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-4">
-            Skills & Technologies
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-gray-900 dark:text-white">
+            Skills
           </h2>
-          <p className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-            A comprehensive overview of the technologies and tools I work with.
-          </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Minimal Grid View */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-16 max-w-6xl mx-auto">
           {skills.map((skillCategory, index) => (
             <motion.div
               key={skillCategory.category}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              transition={{ duration: 1, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
               viewport={{ once: true }}
-              className="card p-6"
+              className="space-y-4"
             >
-              <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4 text-center">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
                 {skillCategory.category}
               </h3>
-              <div className="flex flex-wrap gap-2 justify-center">
+              <div className="space-y-2">
                 {skillCategory.items.map((skill) => (
-                  <span
+                  <p
                     key={skill}
-                    className="px-3 py-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors duration-200"
+                    className="text-base text-gray-600 dark:text-gray-400"
                   >
                     {skill}
-                  </span>
+                  </p>
                 ))}
               </div>
             </motion.div>

@@ -1,22 +1,34 @@
 # Maanav Ghai - Professional Portfolio
 
-A clean, professional portfolio website built with Next.js, TypeScript, and Tailwind CSS. Designed to be recruiter-friendly and showcase technical skills effectively.
+A modern, interactive portfolio website built with Next.js, TypeScript, and Three.js. Features immersive 3D elements while maintaining professional design and accessibility standards.
 
 ## 🚀 Features
 
 - **Professional Design**: Clean, minimal aesthetic suitable for Fortune-100 companies
-- **Dark Mode**: Elegant theme switching with system preference detection
+- **3D Interactive Elements**: WebGL-powered animations with progressive enhancement
+- **Dark Mode**: Elegant theme switching with sage green light mode
 - **Responsive Layout**: Optimized for all devices and screen sizes
-- **Performance Focused**: Built with Next.js 14 and optimized for speed
-- **Accessibility**: WCAG AA compliant with proper focus states and semantic HTML
+- **Performance Focused**: Lazy-loaded 3D, optimized rendering, mobile-friendly
+- **Accessibility**: WCAG AA compliant with keyboard navigation and ARIA labels
 - **SEO Optimized**: Meta tags, structured data, and social media optimization
 
-## 🛠️ Tech Stack
+## ✨ 3D Features
+
+- **Floating Hero Background**: Animated glassmorphic shapes in 3D space
+- **Interactive Skill Orbs**: Hoverable 3D visualization of technical skills
+- **Scroll-Driven Animations**: Camera and object movements tied to scroll
+- **Progressive Enhancement**: Automatic fallback to 2D for unsupported devices
+- **Performance Optimized**: Pause on hidden, device detection, adjustable quality
+
+[📖 See 3D Integration Guide](./docs/3D_INTEGRATION.md) | [� View Examples](./docs/3D_EXAMPLES.md)
+
+## �🛠️ Tech Stack
 
 - **Framework**: Next.js 14 (App Router)
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS
-- **Animations**: Framer Motion
+- **3D Rendering**: React Three Fiber + Three.js
+- **Animations**: Framer Motion + GSAP
 - **UI Components**: Radix UI primitives
 - **Icons**: Lucide React
 - **Deployment**: Vercel (recommended)
@@ -27,22 +39,29 @@ A clean, professional portfolio website built with Next.js, TypeScript, and Tail
 ├── app/                    # Next.js app directory
 │   ├── globals.css        # Global styles and Tailwind
 │   ├── layout.tsx         # Root layout with theme provider
-│   └── page.tsx           # Main page component
+│   ├── page.tsx           # Main page component
+│   └── api/               # API routes (contact form)
 ├── components/            # Reusable UI components
+│   ├── 3d/               # 3D components (Scene3D, FloatingShapes, SkillOrbs)
 │   ├── Navigation.tsx     # Sticky navigation header
-│   ├── Hero.tsx          # Hero section with avatar
+│   ├── Hero.tsx          # Hero section with 3D background
 │   ├── About.tsx         # About section with stats
 │   ├── Work.tsx          # Experience and projects
-│   ├── Skills.tsx        # Skills categorization
+│   ├── Skills.tsx        # Skills with 3D toggle
 │   ├── Contact.tsx       # Contact information
 │   ├── ExperienceCard.tsx # Work experience cards
 │   ├── ProjectTile.tsx   # Project grid tiles
 │   └── ProjectModal.tsx  # Project detail modals
 ├── contexts/              # React contexts
-│   └── ThemeContext.tsx  # Dark mode management
+│   └── ThemeContext.tsx  # Dark/light mode management
 ├── lib/                   # Utility functions and data
 │   ├── utils.ts          # Helper functions
-│   └── data.ts           # Content data (experience, projects, skills)
+│   ├── data.ts           # Content data
+│   ├── use3DHooks.ts     # 3D animation hooks
+│   └── performanceMonitor.tsx # FPS and performance tracking
+├── docs/                  # Documentation
+│   ├── 3D_INTEGRATION.md # 3D setup and architecture
+│   └── 3D_EXAMPLES.md    # Usage examples
 └── public/                # Static assets
 ```
 

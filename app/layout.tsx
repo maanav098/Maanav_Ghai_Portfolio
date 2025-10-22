@@ -9,6 +9,7 @@ import { FloatingElements } from '@/components/FloatingElements'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
   title: 'Maanav Ghai - Full-Stack & AI Engineer',
   description: 'Full-Stack & AI Engineer who builds fast, secure, human-friendly products. Experience with React, Next.js, Python, Flask, and machine learning.',
   keywords: ['Full-Stack Engineer', 'AI Engineer', 'React Developer', 'Python Developer', 'Machine Learning Engineer'],

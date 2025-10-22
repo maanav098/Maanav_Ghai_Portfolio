@@ -34,9 +34,9 @@ export function Navigation() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-200",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
-          ? "bg-white/80 backdrop-blur-md border-b border-slate-200 shadow-sm dark:bg-slate-900/80 dark:border-slate-700"
+          ? "bg-white/70 dark:bg-black/70 backdrop-blur-2xl border-b border-gray-200/50 dark:border-gray-800/50 shadow-sm"
           : "bg-transparent"
       )}
     >

@@ -13,51 +13,46 @@ interface ExperienceCardProps {
 export function ExperienceCard({ experience, index }: ExperienceCardProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
+      transition={{ duration: 1, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
       viewport={{ once: true }}
-      className="card p-6 hover:shadow-lg transition-all duration-200"
+      className="group py-12 border-b border-gray-200 dark:border-gray-800 last:border-b-0"
     >
-      <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
-        <div>
-          <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-1">
+      <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8">
+        <div className="flex-1">
+          <h3 className="text-2xl sm:text-3xl font-semibold text-gray-900 dark:text-white mb-3 tracking-tight">
             {experience.position}
           </h3>
-          <p className="text-lg font-medium text-blue-600 dark:text-blue-400 mb-1">
+          <p className="text-lg font-medium text-[#0071e3] dark:text-[#2997ff] mb-4">
             {experience.company}
           </p>
-          <div className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
-            <span>{formatDate(experience.startDate)} - {formatDate(experience.endDate)}</span>
-            <span>•</span>
-            <span>{experience.location}</span>
+          
+          {/* Description */}
+          <div className="space-y-2 mb-6">
+            {experience.description.map((item, i) => (
+              <p key={i} className="text-base text-gray-600 dark:text-gray-400 leading-relaxed">
+                {item}
+              </p>
+            ))}
+          </div>
+
+          {/* Metrics */}
+          <div className="flex flex-wrap gap-2">
+            {experience.metrics.map((metric, i) => (
+              <span
+                key={i}
+                className="px-3 py-1 text-xs font-medium text-gray-600 dark:text-gray-400"
+              >
+                {metric}
+              </span>
+            ))}
           </div>
         </div>
-      </div>
 
-      {/* Description */}
-      <div className="mb-4">
-        <ul className="space-y-2">
-          {experience.description.map((item, i) => (
-            <li key={i} className="flex items-start gap-2 text-slate-600 dark:text-slate-300">
-              <span className="text-blue-500 mt-2 flex-shrink-0">•</span>
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* Metrics */}
-      <div className="pt-4 border-t border-slate-200 dark:border-slate-700">
-        <div className="flex flex-wrap gap-2">
-          {experience.metrics.map((metric, i) => (
-            <span
-              key={i}
-              className="px-3 py-1 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 text-sm font-medium rounded-full border border-green-200 dark:border-green-800"
-            >
-              {metric}
-            </span>
-          ))}
+        <div className="text-sm text-gray-500 dark:text-gray-500 md:text-right whitespace-nowrap">
+          <div>{formatDate(experience.startDate)} - {formatDate(experience.endDate)}</div>
+          <div className="mt-1">{experience.location}</div>
         </div>
       </div>
     </motion.div>

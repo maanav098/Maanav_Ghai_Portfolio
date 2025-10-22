@@ -16,16 +16,16 @@ export type ThemeType = 'light' | 'dark'
 
 export const themes: Record<ThemeType, ThemeColors> = {
   light: {
-    primary: '#5A7D7C', // Sage green
-    secondary: '#A9C1A3', // Soft moss accent
-    accent: '#8FB996', // Fresh leafy highlight
-    background: '#F5F6F1', // Warm neutral backdrop
-    surface: '#FFFFFF', // Clean cards against sage base
-    text: '#2F3E46', // Deep slate-green for readability
-    textSecondary: '#607274', // Muted sage-gray for supporting copy
-    border: '#DAE3DB', // Gentle sage border
-    shadow: 'rgba(47, 62, 70, 0.08)', // Soft natural shadow
-    glow: '0 0 18px rgba(138, 171, 145, 0.25)' // Sage glow
+    primary: '#0071e3',      // Apple blue
+    secondary: '#86868b',    // Apple gray
+    accent: '#06c',          // Bright accent blue
+    background: '#ffffff',   // Pure white
+    surface: '#f5f5f7',      // Light gray surface
+    text: '#1d1d1f',         // Near black text
+    textSecondary: '#86868b', // Secondary gray text
+    border: '#d2d2d7',       // Light border
+    shadow: 'rgba(0, 0, 0, 0.04)', // Subtle shadow
+    glow: '0 0 20px rgba(0, 113, 227, 0.15)' // Apple blue glow
   },
   // The previous 'futuristic' theme is now the 'dark' theme
   dark: {

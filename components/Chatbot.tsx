@@ -99,12 +99,7 @@ export function Chatbot() {
       <motion.button
         data-chatbot
         onClick={() => setIsOpen(!isOpen)}
-        className={cn(
-          "fixed bottom-6 right-6 z-50 p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110",
-          theme === 'dark' 
-            ? "bg-gradient-to-r from-cyan-500 to-purple-600 text-white" 
-            : "bg-indigo-500 text-white hover:bg-indigo-600"
-        )}
+        className="fixed bottom-6 right-6 z-50 p-4 rounded-full shadow-lg bg-[#0071e3] dark:bg-[#2997ff] text-white hover:bg-[#0077ed] dark:hover:bg-[#409cff] transition-all duration-300"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
       >
@@ -118,30 +113,20 @@ export function Chatbot() {
             initial={{ opacity: 0, scale: 0.8, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
-            transition={{ duration: 0.3 }}
-            className={cn(
-              "fixed bottom-24 right-6 z-50 w-80 h-96 rounded-2xl shadow-2xl border",
-              theme === 'dark'
-                ? "bg-black border-cyan-500/30"
-                : "bg-white border-slate-200"
-            )}
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed bottom-24 right-6 z-50 w-80 h-96 rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-black"
           >
             {/* Header */}
-            <div className={cn(
-              "flex items-center justify-between p-4 border-b rounded-t-2xl",
-              theme === 'dark'
-                ? "bg-gradient-to-r from-cyan-500 to-purple-600 text-white"
-                : "bg-slate-50 border-slate-200"
-            )}>
+            <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-800 rounded-t-3xl bg-gray-50 dark:bg-gray-900">
               <div className="flex items-center space-x-2">
-                <Bot className="w-5 h-5" />
-                <span className="font-semibold">Maanav{"'"}s AI</span>
+                <Bot className="w-5 h-5 text-[#0071e3] dark:text-[#2997ff]" />
+                <span className="font-semibold text-gray-900 dark:text-white">Maanav{"'"}s AI</span>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-1 hover:bg-white/20 rounded-full transition-colors"
+                className="p-1 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-full transition-colors"
               >
-                <X className="w-4 h-4" />
+                <X className="w-4 h-4 text-gray-600 dark:text-gray-400" />
               </button>
             </div>
 
@@ -159,14 +144,10 @@ export function Chatbot() {
                 >
                   <div
                     className={cn(
-                      "max-w-xs px-3 py-2 rounded-lg",
+                      "max-w-xs px-4 py-2 rounded-2xl",
                       message.sender === 'user'
-                        ? theme === 'dark'
-                          ? "bg-cyan-500 text-white"
-                          : "bg-indigo-500 text-white"
-                        : theme === 'dark'
-                          ? "bg-slate-800 text-white"
-                          : "bg-slate-100 text-slate-900"
+                        ? "bg-[#0071e3] dark:bg-[#2997ff] text-white"
+                        : "bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white"
                     )}
                   >
                     <p className="text-sm">{message.text}</p>
@@ -183,11 +164,11 @@ export function Chatbot() {
                   animate={{ opacity: 1 }}
                   className="flex justify-start"
                 >
-                  <div className="bg-slate-100 dark:bg-slate-800 rounded-lg px-3 py-2">
+                  <div className="bg-gray-100 dark:bg-gray-900 rounded-2xl px-4 py-2">
                     <div className="flex space-x-1">
-                      <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce"></div>
-                      <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                      <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                     </div>
                   </div>
                 </motion.div>
@@ -197,7 +178,7 @@ export function Chatbot() {
             </div>
 
             {/* Input Area */}
-            <div className="p-4 border-t border-slate-200 dark:border-slate-700">
+            <div className="p-4 border-t border-gray-200 dark:border-gray-800">
               <div className="flex space-x-2">
                 <input
                   type="text"
@@ -205,22 +186,12 @@ export function Chatbot() {
                   onChange={(e) => setInputText(e.target.value)}
                   onKeyPress={handleKeyPress}
                   placeholder="Ask me anything..."
-                  className={cn(
-                    "flex-1 px-3 py-2 rounded-lg text-sm border focus:outline-none focus:ring-2 transition-all",
-                    theme === 'dark'
-                      ? "bg-slate-800 border-cyan-500/30 text-white focus:ring-cyan-500/50 placeholder-slate-400"
-                      : "bg-white border-slate-200 focus:ring-indigo-500/50"
-                  )}
+                  className="flex-1 px-4 py-2 rounded-full text-sm border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#0071e3] dark:focus:ring-[#2997ff] transition-all placeholder-gray-400"
                 />
                 <button
                   onClick={handleSendMessage}
                   disabled={!inputText.trim() || isLoading}
-                  className={cn(
-                    "p-2 rounded-lg transition-colors disabled:opacity-50",
-                    theme === 'dark'
-                      ? "bg-cyan-500 text-white hover:bg-cyan-600"
-                      : "bg-indigo-500 text-white hover:bg-indigo-600"
-                  )}
+                  className="p-2 rounded-full bg-[#0071e3] dark:bg-[#2997ff] text-white hover:bg-[#0077ed] dark:hover:bg-[#409cff] transition-colors disabled:opacity-50"
                 >
                   <Send className="w-4 h-4" />
                 </button>

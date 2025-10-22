@@ -23,29 +23,21 @@ export function Work() {
   }
 
   return (
-    <section id="work" className="section-padding">
-      <div className="container-max">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-4">
-            Work Experience
-          </h2>
-          <p className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-            My professional journey and key projects that demonstrate my skills and impact.
-          </p>
-        </motion.div>
-
+    <section id="work" className="bg-white dark:bg-black">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* Experience Section */}
-        <div className="mb-20">
-          <h3 className="text-2xl font-semibold text-slate-900 dark:text-white mb-8 text-center">
-            Professional Experience
-          </h3>
-          <div className="space-y-6 max-w-4xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          viewport={{ once: true }}
+          className="py-32 sm:py-40"
+        >
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-gray-900 dark:text-white mb-20 text-center">
+            Experience
+          </h2>
+
+          <div className="space-y-12 max-w-4xl mx-auto">
             {experiences.map((experience, index) => (
               <ExperienceCard
                 key={experience.id}
@@ -54,14 +46,21 @@ export function Work() {
               />
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* Projects Section */}
-        <div>
-          <h3 className="text-2xl font-semibold text-slate-900 dark:text-white mb-8 text-center">
-            Featured Projects
-          </h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <motion.div
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          viewport={{ once: true }}
+          className="py-32 sm:py-40"
+        >
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-gray-900 dark:text-white mb-20 text-center">
+            Projects
+          </h2>
+
+          <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
             {projects.map((project, index) => (
               <ProjectTile
                 key={project.id}
@@ -71,7 +70,7 @@ export function Work() {
               />
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* Project Modal */}
         <ProjectModal
