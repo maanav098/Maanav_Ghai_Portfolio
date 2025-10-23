@@ -20,7 +20,7 @@ export function About() {
 
           <div className="space-y-6 text-lg sm:text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
             <p>
-              I'm a Full-Stack & AI Engineer who specializes in building performant,
+              I&apos;m a Full-Stack & AI Engineer who specializes in building performant,
               secure, and user-friendly products. With experience across the entire
               technology stack, I focus on creating clean architectures that scale
               and deliver measurable business value.
@@ -28,7 +28,7 @@ export function About() {
 
             <p>
               I work with clean code principles, prioritize measurable outcomes,
-              and believe in the power of collaboration. Whether it's optimizing
+              and believe in the power of collaboration. Whether it&apos;s optimizing
               database queries for millisecond performance or implementing
               enterprise-grade security practices, I approach every challenge
               with a focus on clarity and results.

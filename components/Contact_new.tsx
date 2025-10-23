@@ -17,7 +17,7 @@ export function Contact() {
           {/* Heading */}
           <div className="space-y-6">
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-semibold text-gray-900 dark:text-white tracking-tight">
-              Let's work together
+              Let&apos;s work together
             </h2>
             <p className="text-lg sm:text-xl text-gray-500 dark:text-gray-500 max-w-2xl mx-auto">
               Open to full-time roles, internships, and exciting collaborations.
