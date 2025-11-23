@@ -245,4 +245,4 @@ For questions or support:
 
 ---
 
-Built with ❤️ by Maanav Ghai
+Built with ❤️ by Maanav Ghai.
