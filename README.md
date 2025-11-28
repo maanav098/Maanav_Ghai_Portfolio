@@ -6,11 +6,31 @@ A modern, interactive portfolio website built with Next.js, TypeScript, and Thre
 
 - **Professional Design**: Clean, minimal aesthetic suitable for Fortune-100 companies
 - **3D Interactive Elements**: WebGL-powered animations with progressive enhancement
-- **Dark Mode**: Elegant theme switching with sage green light mode
+- **Theme Modes**: Dark baseline with elegant sage-green light mode
 - **Responsive Layout**: Optimized for all devices and screen sizes
 - **Performance Focused**: Lazy-loaded 3D, optimized rendering, mobile-friendly
 - **Accessibility**: WCAG AA compliant with keyboard navigation and ARIA labels
 - **SEO Optimized**: Meta tags, structured data, and social media optimization
+
+## 📚 Table of Contents
+
+1. [Features](#-features)
+2. [3D Features](#-3d-features)
+3. [Tech Stack](#-tech-stack)
+4. [Project Structure](#-project-structure)
+5. [Design System](#-design-system)
+6. [Getting Started](#-getting-started)
+7. [Customization](#-customization)
+8. [Key Sections](#-key-sections)
+9. [Development](#-development)
+10. [Deployment](#-deployment)
+11. [Responsive Design](#-responsive-design)
+12. [Accessibility](#-accessibility)
+13. [SEO Features](#-seo-features)
+14. [Analytics](#-analytics-optional)
+15. [Contributing](#-contributing)
+16. [License](#-license)
+17. [Support](#-support)
 
 ## ✨ 3D Features
 
@@ -20,9 +40,9 @@ A modern, interactive portfolio website built with Next.js, TypeScript, and Thre
 - **Progressive Enhancement**: Automatic fallback to 2D for unsupported devices
 - **Performance Optimized**: Pause on hidden, device detection, adjustable quality
 
-[📖 See 3D Integration Guide](./docs/3D_INTEGRATION.md) | [� View Examples](./docs/3D_EXAMPLES.md)
+[📖 See 3D Integration Guide](./docs/3D_INTEGRATION.md) | [🖼️ View Examples](./docs/3D_EXAMPLES.md)
 
-## �🛠️ Tech Stack
+## 🛠️ Tech Stack
 
 - **Framework**: Next.js 14 (App Router)
 - **Language**: TypeScript
