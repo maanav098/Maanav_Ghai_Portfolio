@@ -1,6 +1,6 @@
 # Maanav Ghai - Professional Portfolio
 
-A modern, interactive portfolio website built with Next.js, TypeScript, and Three.js. Features immersive 3D elements while maintaining professional design and accessibility standards.
+A modern, interactive portfolio website built with Next.js, TypeScript, and Three.js. Features immersive 3D elements while maintaining professional design and accessibility standards..
 
 ## 🚀 Features
 
@@ -259,10 +259,10 @@ This project is open source and available under the [MIT License](LICENSE).
 ## 📞 Support
 
 For questions or support:
-- **Email**: maanavghai1409@gmail.com
+- **Email**: maanavg14@gmail.com
 - **LinkedIn**: [Maanav Ghai](https://linkedin.com/in/maanavghai)
 - **GitHub**: [Maanav Ghai](https://github.com/maanav098)
 
 ---
 
-Built with ❤️ by Maanav Ghai.
+Built by Maanav Ghai.

@@ -1,15 +1,18 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { ThemeToggle } from './ThemeToggle'
 import { scrollToSection } from '@/lib/utils'
 import { cn } from '@/lib/utils'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, ArrowUpRight } from 'lucide-react'
+import { profile } from '@/lib/data'
 
 const navItems = [
   { id: 'about', label: 'About' },
-  { id: 'work', label: 'Work' },
+  { id: 'work', label: 'Experience' },
   { id: 'skills', label: 'Skills' },
+  { id: 'education', label: 'Education' },
+  { id: 'certifications', label: 'Certifications' },
+  { id: 'leadership', label: 'Leadership' },
   { id: 'contact', label: 'Contact' }
 ]
 
@@ -36,40 +39,53 @@ export function Navigation() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
-          ? "bg-white/70 dark:bg-black/70 backdrop-blur-2xl border-b border-gray-200/50 dark:border-gray-800/50 shadow-sm"
+          ? "border-b border-white/10 bg-[#05070b]/75 backdrop-blur-2xl"
           : "bg-transparent"
       )}
     >
       <nav className="container-max px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo/Name */}
+        <div className="flex items-center justify-between h-20">
           <button
             onClick={() => handleNavClick('hero')}
-            className="text-xl font-semibold text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-cyan-400 transition-colors duration-200"
+            className="flex items-center gap-3 text-left"
           >
-            Maanav Ghai
+            <span className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/5 font-display text-sm font-semibold tracking-[0.24em] text-white">
+              MG
+            </span>
+            <span>
+              <span className="block font-display text-lg font-semibold tracking-[-0.04em] text-white">
+                {profile.name}
+              </span>
+              <span className="block text-xs uppercase tracking-[0.26em] text-slate-500">
+                {profile.headline}
+              </span>
+            </span>
           </button>
 
-          {/* Desktop Navigation Links */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden items-center gap-7 lg:flex">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className="text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white transition-colors duration-200 font-medium"
+                className="text-sm font-medium text-slate-400 transition-colors duration-200 hover:text-white"
               >
                 {item.label}
               </button>
             ))}
           </div>
 
-          {/* Theme Toggle & Mobile Menu Button */}
-          <div className="flex items-center space-x-4">
-            <ThemeToggle />
-            
-            {/* Mobile Menu Button */}
+          <div className="flex items-center gap-4">
+            <a
+              href={profile.resumeUrl}
+              download="Maanav_Ghai_Resume.pdf"
+              className="hidden items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-white transition-all duration-300 hover:border-blue-400/40 hover:bg-blue-500/10 md:inline-flex"
+            >
+              Resume
+              <ArrowUpRight className="h-4 w-4" />
+            </a>
+
             <button 
-              className="md:hidden p-2 text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white transition-colors"
+              className="rounded-full border border-white/10 bg-white/5 p-2 text-slate-300 transition-colors hover:text-white lg:hidden"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle mobile menu"
             >
@@ -82,21 +98,28 @@ export function Navigation() {
           </div>
         </div>
 
-        {/* Mobile Navigation Menu */}
         <div className={cn(
-          "md:hidden transition-all duration-300 ease-in-out overflow-hidden",
-          isMobileMenuOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0"
+          "overflow-hidden transition-all duration-300 ease-in-out lg:hidden",
+          isMobileMenuOpen ? "max-h-[540px] opacity-100" : "max-h-0 opacity-0"
         )}>
-          <div className="py-4 space-y-2 border-t border-slate-200 dark:border-slate-700">
+          <div className="panel mb-4 space-y-2 border-white/10 p-4">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className="w-full text-left px-4 py-2 text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors duration-200 font-medium"
+                className="w-full rounded-2xl px-4 py-3 text-left text-sm font-medium text-slate-300 transition-colors duration-200 hover:bg-white/5 hover:text-white"
               >
                 {item.label}
               </button>
             ))}
+            <a
+              href={profile.resumeUrl}
+              download="Maanav_Ghai_Resume.pdf"
+              className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-blue-500 px-4 py-3 text-sm font-semibold text-white"
+            >
+              Download Resume
+              <ArrowUpRight className="h-4 w-4" />
+            </a>
           </div>
         </div>
       </nav>

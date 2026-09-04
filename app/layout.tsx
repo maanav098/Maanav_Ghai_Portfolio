@@ -1,32 +1,39 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Manrope, Space_Grotesk } from 'next/font/google'
 import './globals.css'
-import { ThemeProvider } from '@/contexts/ThemeContext'
 import { Navigation } from '@/components/Navigation'
-import { Chatbot } from '@/components/Chatbot'
 import { FloatingElements } from '@/components/FloatingElements'
+import { profile } from '@/lib/data'
 
-const inter = Inter({ subsets: ['latin'] })
+const manrope = Manrope({
+  subsets: ['latin'],
+  variable: '--font-body',
+})
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-display',
+})
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
-  title: 'Maanav Ghai - Full-Stack & AI Engineer',
-  description: 'Full-Stack & AI Engineer who builds fast, secure, human-friendly products. Experience with React, Next.js, Python, Flask, and machine learning.',
-  keywords: ['Full-Stack Engineer', 'AI Engineer', 'React Developer', 'Python Developer', 'Machine Learning Engineer'],
-  authors: [{ name: 'Maanav Ghai' }],
-  creator: 'Maanav Ghai',
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || profile.siteUrl),
+  title: `${profile.name} | ${profile.headline}`,
+  description: profile.summaryShort,
+  keywords: ['Full-Stack AI Engineer', 'Spring Boot Engineer', 'Spring AI', 'RAG Engineer', 'Angular Developer', 'Java Engineer'],
+  authors: [{ name: profile.name }],
+  creator: profile.name,
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://maanavghai.com',
-    title: 'Maanav Ghai - Full-Stack & AI Engineer',
-    description: 'Full-Stack & AI Engineer who builds fast, secure, human-friendly products.',
-    siteName: 'Maanav Ghai Portfolio',
+    url: profile.siteUrl,
+    title: `${profile.name} | ${profile.headline}`,
+    description: profile.summaryShort,
+    siteName: `${profile.name} Portfolio`,
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Maanav Ghai - Full-Stack & AI Engineer',
-    description: 'Full-Stack & AI Engineer who builds fast, secure, human-friendly products.',
+    title: `${profile.name} | ${profile.headline}`,
+    description: profile.summaryShort,
   },
   robots: {
     index: true,
@@ -50,17 +57,15 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.ico" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
-      <body className={inter.className}>
-        <ThemeProvider>
+      <body className={`${manrope.variable} ${spaceGrotesk.variable}`}>
+        <div className="site-shell">
           <FloatingElements />
           <Navigation />
-          <main>
+          <main className="relative z-10">
             {children}
           </main>
-          <Chatbot />
-        </ThemeProvider>
+        </div>
       </body>
     </html>
   )

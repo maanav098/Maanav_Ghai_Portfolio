@@ -6,6 +6,10 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function formatDate(date: string) {
+  if (date.toLowerCase() === 'present') {
+    return 'Present'
+  }
+
   return new Date(date).toLocaleDateString('en-US', {
     month: 'short',
     year: 'numeric',

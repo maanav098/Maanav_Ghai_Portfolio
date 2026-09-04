@@ -1,205 +1,70 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useTheme } from '@/contexts/ThemeContext'
-import { Code, Zap, Database, Cpu, Globe, Rocket, Sparkles, Star } from 'lucide-react'
-
-const floatingIcons = [
-  { icon: Code, delay: 0, color: 'text-blue-500' },
-  { icon: Zap, delay: 1, color: 'text-purple-500' },
-  { icon: Database, delay: 2, color: 'text-green-500' },
-  { icon: Cpu, delay: 3, color: 'text-orange-500' },
-  { icon: Globe, delay: 4, color: 'text-pink-500' },
-  { icon: Rocket, delay: 5, color: 'text-cyan-500' },
-]
 
 export function FloatingElements() {
-  const { theme } = useTheme()
-
   return (
-    <div className="fixed inset-0 pointer-events-none overflow-hidden">
-      {/* Floating Icons */}
-      {floatingIcons.map((item, index) => (
+    <div className="pointer-events-none fixed inset-0 overflow-hidden">
+      {[0, 1, 2].map((item) => (
         <motion.div
-          key={index}
-          className={`absolute ${item.color} opacity-20`}
+          key={item}
+          className="absolute rounded-full bg-blue-500/10 blur-3xl"
           style={{
-            left: `${20 + (index * 15)}%`,
-            top: `${30 + (index * 10)}%`,
+            width: item === 0 ? 340 : item === 1 ? 260 : 180,
+            height: item === 0 ? 340 : item === 1 ? 260 : 180,
+            left: item === 0 ? '6%' : item === 1 ? '72%' : '48%',
+            top: item === 0 ? '12%' : item === 1 ? '58%' : '74%',
           }}
           animate={{
-            y: [-20, 20, -20],
-            x: [-10, 10, -10],
-            rotate: [0, 180, 360],
-            scale: [1, 1.2, 1],
+            x: item === 1 ? [0, -26, 0] : [0, 22, 0],
+            y: item === 2 ? [0, -24, 0] : [0, 18, 0],
+            scale: [1, 1.12, 1],
           }}
           transition={{
-            duration: 8 + index * 2,
+            duration: 12 + item * 3,
             repeat: Infinity,
-            ease: "easeInOut",
-            delay: item.delay,
+            ease: 'easeInOut',
           }}
-        >
-          <item.icon className="w-6 h-6" />
-        </motion.div>
+        />
       ))}
-      
-      {/* Creative Geometric Shapes */}
+
       <motion.div
-        className="absolute left-10 top-20 w-32 h-32 border border-indigo-200/20 rounded-full"
+        className="absolute left-[12%] top-[20%] h-64 w-64 rounded-full border border-white/6"
         animate={{
-          scale: [1, 1.5, 1],
-          rotate: [0, 180, 360],
-          opacity: [0.1, 0.3, 0.1],
+          scale: [1, 1.08, 1],
+          opacity: [0.08, 0.15, 0.08],
         }}
         transition={{
-          duration: 20,
+          duration: 14,
           repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-      
-      <motion.div
-        className="absolute right-20 top-40 w-24 h-24 bg-gradient-to-br from-cyan-200/10 to-purple-200/10 rounded-lg"
-        animate={{
-          scale: [1, 1.3, 1],
-          rotate: [0, -180, 0],
-          opacity: [0.1, 0.2, 0.1],
-        }}
-        transition={{
-          duration: 25,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 2,
+          ease: 'easeInOut',
         }}
       />
 
-      {/* Theme-specific floating elements */}
-      {theme === 'dark' && (
-        <>
-          {/* Cyan Particles */}
-          <motion.div
-            className="absolute right-20 top-1/4 w-2 h-2 bg-cyan-400 rounded-full"
-            animate={{
-              scale: [1, 2, 1],
-              opacity: [0.5, 1, 0.5],
-            }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-          <motion.div
-            className="absolute left-1/4 bottom-1/3 w-3 h-3 bg-purple-400 rounded-full"
-            animate={{
-              scale: [1, 1.5, 1],
-              opacity: [0.3, 0.8, 0.3],
-            }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 1,
-            }}
-          />
-          <motion.div
-            className="absolute right-1/3 top-1/2 w-1 h-1 bg-pink-400 rounded-full"
-            animate={{
-              scale: [1, 3, 1],
-              opacity: [0.2, 1, 0.2],
-            }}
-            transition={{
-              duration: 5,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 2,
-            }}
-          />
-          
-          {/* Glowing Orbs */}
-          <motion.div
-            className="absolute left-1/3 top-1/4 w-4 h-4 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full blur-sm"
-            animate={{
-              scale: [1, 1.5, 1],
-              opacity: [0.3, 0.8, 0.3],
-              x: [-10, 10, -10],
-            }}
-            transition={{
-              duration: 6,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 3,
-            }}
-          />
-        </>
-      )}
-
-      {/* Light Mode Specific Elements */}
-      {theme === 'light' && (
-        <>
-          {/* Subtle Indigo Gradients */}
-          <motion.div
-            className="absolute left-1/4 top-1/3 w-40 h-40 bg-gradient-to-br from-indigo-100/30 to-cyan-100/30 rounded-full blur-3xl"
-            animate={{
-              scale: [1, 1.2, 1],
-              opacity: [0.1, 0.2, 0.1],
-            }}
-            transition={{
-              duration: 15,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-          
-          {/* Floating Stars */}
-          <motion.div
-            className="absolute right-1/4 top-1/2 text-indigo-300/40"
-            animate={{
-              y: [-5, 5, -5],
-              rotate: [0, 360, 0],
-              scale: [1, 1.2, 1],
-            }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 1,
-            }}
-          >
-            <Star className="w-4 h-4" />
-          </motion.div>
-          
-          <motion.div
-            className="absolute left-1/2 bottom-1/4 text-cyan-300/40"
-            animate={{
-              y: [5, -5, 5],
-              rotate: [0, -360, 0],
-              scale: [1, 1.1, 1],
-            }}
-            transition={{
-              duration: 10,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 2,
-            }}
-          >
-            <Sparkles className="w-3 h-3" />
-          </motion.div>
-        </>
-      )}
-
-      {/* Interactive Mouse Follow Effect */}
       <motion.div
-        className="absolute w-64 h-64 bg-gradient-to-r from-indigo-200/5 to-cyan-200/5 rounded-full blur-3xl"
+        className="absolute right-[14%] top-[18%] h-28 w-28 rotate-12 rounded-[32px] border border-blue-400/20 bg-blue-500/6"
         animate={{
-          x: [0, 100, 0],
-          y: [0, 50, 0],
+          y: [0, 16, 0],
+          rotate: [12, 24, 12],
+          opacity: [0.16, 0.28, 0.16],
         }}
         transition={{
-          duration: 20,
+          duration: 10,
           repeat: Infinity,
-          ease: "easeInOut",
+          ease: 'easeInOut',
+        }}
+      />
+
+      <motion.div
+        className="absolute inset-x-0 bottom-[-16rem] mx-auto h-[28rem] w-[28rem] rounded-full bg-blue-500/10 blur-3xl"
+        animate={{
+          scale: [1, 1.12, 1],
+          opacity: [0.22, 0.34, 0.22],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: 'easeInOut',
         }}
       />
     </div>

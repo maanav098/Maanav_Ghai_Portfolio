@@ -1,62 +1,70 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { stats } from '@/lib/data'
+import { profile, stats } from '@/lib/data'
 
 export function About() {
   return (
-    <section id="about" className="bg-white dark:bg-black">
-      <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 py-32 sm:py-40">
+    <section id="about" className="section-shell">
+      <div className="section-inner">
         <motion.div
           initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true }}
-          className="space-y-12"
+          className="grid gap-10 lg:grid-cols-[0.88fr_1.12fr]"
         >
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-gray-900 dark:text-white text-center">
-            About
-          </h2>
-
-          <div className="space-y-6 text-lg sm:text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
-            <p>
-              I&apos;m a Full-Stack & AI Engineer who specializes in building performant,
-              secure, and user-friendly products. With experience across the entire
-              technology stack, I focus on creating clean architectures that scale
-              and deliver measurable business value.
+          <div className="space-y-6">
+            <span className="section-kicker">About</span>
+            <h2 className="section-title text-left">The version of me a strong engineering org would want to meet.</h2>
+            <p className="section-copy max-w-xl">
+              {profile.summary}
             </p>
-
-            <p>
-              I work with clean code principles, prioritize measurable outcomes,
-              and believe in the power of collaboration. Whether it&apos;s optimizing
-              database queries for millisecond performance or implementing
-              enterprise-grade security practices, I approach every challenge
-              with a focus on clarity and results.
-            </p>
+            <div className="rounded-[30px] border border-blue-400/12 bg-blue-500/[0.06] p-6">
+              <p className="text-xs uppercase tracking-[0.28em] text-blue-300">Recruiter Read</p>
+              <p className="mt-3 text-base leading-8 text-slate-200">{profile.recruiterSummary}</p>
+            </div>
           </div>
 
-          {/* Minimal Stats */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            viewport={{ once: true }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-12 border-t border-gray-200 dark:border-gray-800"
-          >
-            {stats.map((stat) => (
-              <div
+          <div className="grid gap-5 sm:grid-cols-2">
+            {stats.map((stat, index) => (
+              <motion.div
                 key={stat.label}
-                className="text-center"
+                initial={{ opacity: 0, y: 32 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                viewport={{ once: true }}
+                className="panel panel-hover rounded-[30px] p-6"
               >
-                <div className="text-3xl sm:text-4xl font-semibold text-gray-900 dark:text-white mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-sm text-gray-500 dark:text-gray-500">
-                  {stat.label}
-                </div>
-              </div>
+                <p className="font-display text-4xl font-semibold tracking-[-0.05em] text-white">{stat.value}</p>
+                <p className="mt-3 text-base font-medium text-slate-200">{stat.label}</p>
+                {stat.note && <p className="mt-2 text-sm leading-7 text-slate-500">{stat.note}</p>}
+              </motion.div>
             ))}
-          </motion.div>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+          viewport={{ once: true }}
+          className="panel mt-12 rounded-[34px] p-8 sm:p-10"
+        >
+          <div className="grid gap-5 lg:grid-cols-3">
+            <div>
+              <p className="text-xs uppercase tracking-[0.28em] text-slate-500">What I build</p>
+              <p className="mt-3 text-base leading-8 text-slate-300">Enterprise-grade products where AI capability needs proper backend design, secure APIs, and a usable frontend surface.</p>
+            </div>
+            <div>
+              <p className="text-xs uppercase tracking-[0.28em] text-slate-500">Why I stand out</p>
+              <p className="mt-3 text-base leading-8 text-slate-300">I am strongest when the problem spans architecture, implementation, and product clarity instead of staying inside one layer of the stack.</p>
+            </div>
+            <div>
+              <p className="text-xs uppercase tracking-[0.28em] text-slate-500">Best fit</p>
+              <p className="mt-3 text-base leading-8 text-slate-300">Teams building serious AI products, strong internal platforms, or full-stack systems where measurable delivery is valued more than noise.</p>
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>
