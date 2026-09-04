@@ -112,7 +112,7 @@ export const profile: Profile = {
   location: 'India',
   email: 'maanavg14@gmail.com',
   availability: 'Open to full-time product engineering roles, applied AI engineering teams, and selective high-impact collaborations.',
-  resumeUrl: '/Maanav_Ghai.pdf',
+  resumeUrl: '/Maanav_Ghai-Resume.pdf',
   siteUrl: 'https://maanav-ghai-portfolio.vercel.app',
   social: {
     github: 'https://github.com/maanav098',

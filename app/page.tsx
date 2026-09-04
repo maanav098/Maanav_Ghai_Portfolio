@@ -10,16 +10,18 @@ import { Contact } from '@/components/Contact'
 
 export default function Home() {
   return (
-    <>
+    <main className="relative">
       <Hero />
-      <RecruiterLens />
+      <div className="section-divider" />
       <About />
+      <RecruiterLens />
+      <div className="section-divider" />
       <Work />
       <Skills />
       <EducationSection />
       <CertificationsSection />
       <LeadershipSection />
       <Contact />
-    </>
+    </main>
   )
 }

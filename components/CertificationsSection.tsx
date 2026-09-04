@@ -12,14 +12,14 @@ export function CertificationsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true }}
-          className="mb-16 max-w-3xl"
+          className="mb-10 max-w-3xl"
         >
           <span className="section-kicker">Certifications</span>
-          <h2 className="section-title mt-6">Proof of curiosity backed by technical fundamentals.</h2>
-          <p className="section-copy mt-6">These certifications are not the story by themselves, but they reinforce the areas where I keep sharpening breadth alongside practical product work.</p>
+          <h2 className="section-title mt-5">Proof of curiosity backed by fundamentals.</h2>
+          <p className="section-copy mt-4">These reinforce breadth while day-to-day work stays focused on product delivery.</p>
         </motion.div>
 
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {certifications.map((item, index) => (
             <motion.div
               key={item.id}
@@ -27,10 +27,10 @@ export function CertificationsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.85, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
               viewport={{ once: true }}
-              className="panel panel-hover rounded-[30px] p-7"
+              className="panel rounded-[18px] p-5"
             >
-              <p className="text-xs uppercase tracking-[0.28em] text-slate-500">{item.issuer}</p>
-              <h3 className="mt-4 font-display text-2xl font-semibold tracking-[-0.04em] text-white">{item.name}</h3>
+              <p className="text-xs uppercase tracking-[0.16em] text-slate-500">{item.issuer}</p>
+              <h3 className="mt-3 font-display text-xl font-semibold tracking-[-0.02em] text-white">{item.name}</h3>
             </motion.div>
           ))}
         </div>

@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useScroll, useTransform } from 'framer-motion'
 import {
   Download,
   ArrowRight,
@@ -13,14 +14,18 @@ import {
 import { profile } from '@/lib/data'
 
 export function Hero() {
+  const { scrollY } = useScroll()
+  const leftOrbY = useTransform(scrollY, [0, 700], [0, 110])
+  const rightOrbY = useTransform(scrollY, [0, 700], [0, -90])
+
   return (
-    <section id="hero" className="relative flex min-h-[84svh] items-center overflow-hidden px-6 pb-10 pt-24 sm:px-8 lg:px-12">
+    <section id="hero" className="relative flex min-h-[76svh] items-center overflow-hidden px-6 pb-8 pt-22 sm:px-8 lg:px-12">
       <div className="absolute inset-0 -z-10">
-        <div className="absolute left-0 top-24 h-72 w-72 rounded-full bg-blue-500/8 blur-[120px]" />
-        <div className="absolute right-0 top-20 h-80 w-80 rounded-full bg-sky-400/6 blur-[130px]" />
+        <motion.div style={{ y: leftOrbY }} className="absolute left-0 top-24 h-72 w-72 rounded-full bg-blue-500/8 blur-[120px]" />
+        <motion.div style={{ y: rightOrbY }} className="absolute right-0 top-20 h-80 w-80 rounded-full bg-sky-400/6 blur-[130px]" />
       </div>
 
-      <div className="section-inner relative z-10 grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+      <div className="section-inner relative z-10 grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -108,7 +113,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-          className="panel rounded-[20px] p-6 sm:p-7"
+          className="panel rounded-[18px] p-5 sm:p-6"
         >
           <div className="mb-6 flex items-center gap-3">
             <MapPin className="h-4 w-4 text-slate-400" />

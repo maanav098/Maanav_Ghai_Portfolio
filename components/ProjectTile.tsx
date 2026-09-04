@@ -19,9 +19,9 @@ export function ProjectTile({ project, index, onClick }: ProjectTileProps) {
       viewport={{ once: true }}
       onClick={onClick}
       type="button"
-      className="panel group w-full rounded-[20px] p-6 text-left transition-all duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300/40 sm:p-7"
+      className="panel group w-full rounded-[18px] p-5 text-left transition-all duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300/40 sm:p-6"
     >
-      <div className="space-y-4">
+      <div className="space-y-3.5">
         <div className="flex items-start justify-between gap-4">
           <div>
             {project.category && (
@@ -29,10 +29,10 @@ export function ProjectTile({ project, index, onClick }: ProjectTileProps) {
                 {project.category}
               </span>
             )}
-          <h3 className="font-display text-2xl font-semibold tracking-[-0.03em] text-white transition-colors duration-300 group-hover:text-blue-300 sm:text-[1.75rem]">
+          <h3 className="font-display text-xl font-semibold tracking-[-0.02em] text-white transition-colors duration-300 group-hover:text-blue-300 sm:text-2xl">
             {project.title}
           </h3>
-          <p className="mt-1.5 text-sm text-slate-500 sm:text-base">
+          <p className="mt-1 text-sm text-slate-500">
             {project.subtitle}
           </p>
           </div>
@@ -41,23 +41,16 @@ export function ProjectTile({ project, index, onClick }: ProjectTileProps) {
           </span>
         </div>
 
-        <p className="line-clamp-3 text-sm leading-7 text-slate-300 sm:text-base">
+        <p className="line-clamp-2 text-sm leading-6 text-slate-300">
           {project.description}
         </p>
 
-        <div className="grid gap-3 rounded-xl border border-white/10 bg-white/[0.02] p-4">
-          <div>
-            <p className="text-xs uppercase tracking-[0.16em] text-slate-500">Problem</p>
-            <p className="mt-2 text-sm leading-7 text-slate-300 line-clamp-3">{project.problem}</p>
-          </div>
-          <div>
-            <p className="text-xs uppercase tracking-[0.16em] text-slate-500">Outcome</p>
-            <p className="mt-2 text-sm leading-7 text-slate-300 line-clamp-3">{project.impact[0]}</p>
-          </div>
-        </div>
+        <p className="rounded-lg border border-white/10 bg-white/[0.02] px-3 py-2 text-xs leading-6 text-slate-300 sm:text-sm">
+          {project.impact[0]}
+        </p>
 
-        <div className="flex flex-wrap gap-2 pt-2">
-          {project.tech.slice(0, 5).map((tech) => (
+        <div className="flex flex-wrap gap-2 pt-1">
+          {project.tech.slice(0, 4).map((tech) => (
             <span
               key={tech}
               className="tag"
@@ -67,7 +60,7 @@ export function ProjectTile({ project, index, onClick }: ProjectTileProps) {
           ))}
         </div>
 
-        <div className="pt-1 text-sm font-medium text-blue-300 transition-colors duration-300 group-hover:text-blue-200">
+        <div className="pt-0.5 text-sm font-medium text-blue-300 transition-colors duration-300 group-hover:text-blue-200">
           Explore case study
         </div>
       </div>

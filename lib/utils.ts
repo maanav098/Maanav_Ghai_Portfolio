@@ -19,6 +19,13 @@ export function formatDate(date: string) {
 export function scrollToSection(sectionId: string) {
   const element = document.getElementById(sectionId)
   if (element) {
-    element.scrollIntoView({ behavior: 'smooth' })
+    const navOffset = 96
+    const elementPosition = element.getBoundingClientRect().top + window.scrollY
+    const targetPosition = Math.max(0, elementPosition - navOffset)
+
+    window.scrollTo({
+      top: targetPosition,
+      behavior: 'smooth',
+    })
   }
 }

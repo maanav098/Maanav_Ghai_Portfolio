@@ -30,35 +30,36 @@ export function Work() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true }}
-          className="mb-10 max-w-3xl"
+          className="mb-8 max-w-3xl"
         >
           <span className="section-kicker">Experience and Projects</span>
-          <h2 className="section-title mt-5">Selected work with clear delivery outcomes.</h2>
-          <p className="section-copy mt-5">
+          <h2 className="section-title mt-4">Selected work with clear delivery outcomes.</h2>
+          <p className="section-copy mt-4">
             Real production responsibilities, technical scope, and practical impact.
           </p>
+          <p className="mt-3 text-sm text-slate-500">Use “Show full role details” inside each experience card for the complete breakdown.</p>
         </motion.div>
 
         <div>
-          <div className="mb-6 flex items-center justify-between gap-4">
+          <div className="mb-4 flex items-center justify-between gap-4">
             <h3 className="font-display text-2xl font-semibold tracking-[-0.04em] text-white sm:text-3xl">Experience</h3>
             <span className="text-xs uppercase tracking-[0.2em] text-slate-500">Timeline</span>
           </div>
 
-          <div className="space-y-6">
+          <div className="space-y-4">
             {experiences.map((experience, index) => (
               <ExperienceCard key={experience.id} experience={experience} index={index} />
             ))}
           </div>
         </div>
 
-        <div className="mt-14">
-          <div className="mb-6 flex items-center justify-between gap-4">
+        <div className="mt-10">
+          <div className="mb-4 flex items-center justify-between gap-4">
             <h3 className="font-display text-2xl font-semibold tracking-[-0.04em] text-white sm:text-3xl">Selected Projects</h3>
             <span className="text-xs uppercase tracking-[0.2em] text-slate-500">Case Studies</span>
           </div>
 
-          <div className="grid gap-5 lg:grid-cols-2">
+          <div className="grid gap-4 lg:grid-cols-2">
             {projects.map((project, index) => (
               <ProjectTile
                 key={project.id}

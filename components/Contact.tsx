@@ -6,20 +6,20 @@ import { profile } from '@/lib/data'
 
 export function Contact() {
   return (
-    <section id="contact" className="section-shell pb-22">
+    <section id="contact" className="section-shell pb-14 sm:pb-16">
       <div className="section-inner">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true }}
-          className="panel mx-auto max-w-4xl rounded-[22px] p-6 text-center sm:p-8"
+          className="panel mx-auto max-w-4xl rounded-[20px] p-5 text-center sm:p-7"
         >
           <span className="section-kicker">Contact</span>
           <h2 className="section-title mt-5 text-balance">Open to thoughtful product and engineering roles.</h2>
           <p className="section-copy mx-auto mt-5 max-w-2xl">{profile.availability}</p>
 
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a href={`mailto:${profile.email}`} className="primary-button">
               <Mail className="h-5 w-5" />
               Email Me
@@ -35,7 +35,7 @@ export function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             viewport={{ once: true }}
-            className="mt-8 flex flex-wrap items-center justify-center gap-3"
+            className="mt-6 flex flex-wrap items-center justify-center gap-3"
           >
             <a href={`mailto:${profile.email}`} className="secondary-button">
               <Mail className="h-5 w-5" />
@@ -58,7 +58,7 @@ export function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
             viewport={{ once: true }}
-            className="mt-7 grid gap-4 text-left sm:grid-cols-3"
+            className="mt-6 grid gap-4 text-left sm:grid-cols-3"
           >
             <div>
               <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Best fit</p>

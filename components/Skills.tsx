@@ -42,27 +42,27 @@ export function Skills() {
           ))}
         </div>
 
-        <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {skills.map((skillCategory, index) => (
-            <motion.div
-              key={skillCategory.category}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-              viewport={{ once: true }}
-              className="panel rounded-[18px] p-5"
-            >
-              <h3 className="font-display text-xl font-semibold tracking-[-0.03em] text-white sm:text-2xl">
-                {skillCategory.category}
-              </h3>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {skillCategory.items.map((skill) => (
-                  <span key={skill} className="tag">{skill}</span>
-                ))}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+          viewport={{ once: true }}
+          className="panel mt-8 rounded-[18px] p-5 sm:p-6"
+        >
+          <h3 className="font-display text-xl font-semibold tracking-[-0.03em] text-white">Tooling and stack</h3>
+          <div className="mt-4 grid gap-4 md:grid-cols-2">
+            {skills.map((skillCategory) => (
+              <div key={skillCategory.category}>
+                <p className="text-xs uppercase tracking-[0.16em] text-slate-500">{skillCategory.category}</p>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {skillCategory.items.map((skill) => (
+                    <span key={skill} className="tag">{skill}</span>
+                  ))}
+                </div>
               </div>
-            </motion.div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   )
