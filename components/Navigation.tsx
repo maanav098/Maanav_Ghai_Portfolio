@@ -87,19 +87,19 @@ export function Navigation() {
         />
       </div>
       <nav className="container-max px-4 sm:px-6 lg:px-8">
-        <div className="flex h-[4.15rem] items-center justify-between">
+        <div className="flex h-[4.75rem] items-center justify-between sm:h-[4.15rem]">
           <button
             onClick={() => handleNavClick('hero')}
-            className="group flex items-center gap-3 text-left"
+            className="group flex items-center gap-2.5 text-left sm:gap-3"
           >
             <span className="flex h-9 w-9 items-center justify-center rounded-2xl border border-blue-400/25 bg-blue-500/10 font-display text-[10px] font-semibold tracking-[0.2em] text-white shadow-[0_0_24px_rgba(59,130,246,0.2)] transition-transform duration-300 group-hover:scale-105">
               MG
             </span>
-            <span>
-              <span className="block font-display text-sm font-semibold tracking-[-0.04em] text-white sm:text-base">
+            <span className="min-w-0">
+              <span className="block truncate font-display text-sm font-semibold tracking-[-0.03em] text-white sm:text-base">
                 {profile.name}
               </span>
-              <span className="block text-[10px] uppercase tracking-[0.28em] text-slate-500">
+              <span className="hidden text-[10px] uppercase tracking-[0.22em] text-slate-500 sm:block">
                 {profile.headline}
               </span>
             </span>

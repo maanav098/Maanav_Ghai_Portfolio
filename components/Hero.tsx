@@ -19,7 +19,7 @@ export function Hero() {
   const rightOrbY = useTransform(scrollY, [0, 700], [0, -90])
 
   return (
-    <section id="hero" className="relative flex min-h-[76svh] items-center overflow-hidden px-6 pb-8 pt-22 sm:px-8 lg:px-12">
+    <section id="hero" className="relative flex min-h-[76svh] items-center overflow-hidden px-6 pb-8 pt-28 sm:px-8 sm:pt-24 lg:px-12">
       <div className="absolute inset-0 -z-10">
         <motion.div style={{ y: leftOrbY }} className="absolute left-0 top-24 h-72 w-72 rounded-full bg-blue-500/8 blur-[120px]" />
         <motion.div style={{ y: rightOrbY }} className="absolute right-0 top-20 h-80 w-80 rounded-full bg-sky-400/6 blur-[130px]" />
