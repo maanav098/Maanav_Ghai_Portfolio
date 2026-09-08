@@ -7,17 +7,17 @@ import { recruiterSignals, stats } from '@/lib/data'
 const deliverySignals = [
   {
     title: 'AI-first product thinking',
-    text: 'Builds with real product constraints in mind — retrieval quality, secure access, integration reliability, and measurable user value.',
+    text: 'I build with real product constraints in mind: retrieval quality, secure access, integration reliability, and measurable user value.',
     icon: BrainCircuit,
   },
   {
     title: 'Platform and backend depth',
-    text: 'Comfortable in service contracts, auth, persistence, orchestration, and the systems that make AI features usable at scale.',
+    text: 'I am comfortable owning service contracts, auth, persistence, orchestration, and the platform work that makes AI features usable at scale.',
     icon: Layers3,
   },
   {
     title: 'Execution velocity',
-    text: 'Moves from architecture to delivery quickly, with strong ownership across engineering work, client communication, and team coordination.',
+    text: 'I move from architecture to delivery quickly, with ownership across engineering execution, client communication, and team coordination.',
     icon: Rocket,
   },
 ]
@@ -37,10 +37,10 @@ export function RecruiterLens() {
             <div>
               <span className="section-kicker">Recruiter Snapshot</span>
               <h2 className="mt-5 font-display text-3xl font-semibold leading-[1.1] tracking-[-0.03em] text-white sm:text-4xl">
-                Why teams shortlist me quickly.
+                Why I am a high-signal hire.
               </h2>
               <p className="mt-5 text-sm leading-7 text-slate-400 sm:text-base">
-                This profile is strongest for backend-heavy product teams and applied AI roles that need clean execution, not just experimentation.
+                I am best suited for backend-heavy product teams and applied AI roles where clear execution matters as much as experimentation.
               </p>
 
               <div className="mt-6 grid gap-3 sm:grid-cols-2">

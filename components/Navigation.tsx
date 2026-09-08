@@ -21,6 +21,7 @@ export function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('hero')
   const [scrollProgress, setScrollProgress] = useState(0)
+  const [avatarLoadError, setAvatarLoadError] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -92,9 +93,18 @@ export function Navigation() {
             onClick={() => handleNavClick('hero')}
             className="group flex items-center gap-2.5 text-left sm:gap-3"
           >
-            <span className="flex h-9 w-9 items-center justify-center rounded-2xl border border-blue-400/25 bg-blue-500/10 font-display text-[10px] font-semibold tracking-[0.2em] text-white shadow-[0_0_24px_rgba(59,130,246,0.2)] transition-transform duration-300 group-hover:scale-105">
-              MG
-            </span>
+            {!avatarLoadError && profile.avatarUrl ? (
+              <img
+                src={profile.avatarUrl}
+                alt={`${profile.name} avatar`}
+                onError={() => setAvatarLoadError(true)}
+                className="h-9 w-9 rounded-2xl border border-blue-400/30 object-cover shadow-[0_0_24px_rgba(59,130,246,0.2)] transition-transform duration-300 group-hover:scale-105"
+              />
+            ) : (
+              <span className="flex h-9 w-9 items-center justify-center rounded-2xl border border-blue-400/25 bg-blue-500/10 font-display text-[10px] font-semibold tracking-[0.2em] text-white shadow-[0_0_24px_rgba(59,130,246,0.2)] transition-transform duration-300 group-hover:scale-105">
+                MG
+              </span>
+            )}
             <span className="min-w-0">
               <span className="block truncate font-display text-sm font-semibold tracking-[-0.03em] text-white sm:text-base">
                 {profile.name}

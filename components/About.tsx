@@ -16,7 +16,7 @@ export function About() {
         >
           <div className="space-y-6">
             <span className="section-kicker">About</span>
-            <h2 className="section-title text-left">A product-minded engineer with strong backend depth.</h2>
+            <h2 className="section-title text-left">I build calm systems for complex products.</h2>
             <p className="section-copy max-w-xl">{profile.summary}</p>
 
             <div className="space-y-2 rounded-xl border border-white/10 bg-white/[0.02] p-4">
@@ -53,15 +53,15 @@ export function About() {
           <div className="grid gap-5 lg:grid-cols-3">
             <div>
               <p className="text-xs uppercase tracking-[0.18em] text-slate-500">What I build</p>
-              <p className="mt-2 text-sm leading-7 text-slate-300">Enterprise software with reliable backend systems and practical AI capability.</p>
+              <p className="mt-2 text-sm leading-7 text-slate-300">Secure, scalable products where backend architecture and AI features feel seamless to the end user.</p>
             </div>
             <div>
               <p className="text-xs uppercase tracking-[0.18em] text-slate-500">How I work</p>
-              <p className="mt-2 text-sm leading-7 text-slate-300">Clear architecture, strong implementation discipline, and communication that keeps delivery steady.</p>
+              <p className="mt-2 text-sm leading-7 text-slate-300">I move from ambiguity to clarity fast, write maintainable code, and keep teams aligned through direct communication.</p>
             </div>
             <div>
               <p className="text-xs uppercase tracking-[0.18em] text-slate-500">Best fit</p>
-              <p className="mt-2 text-sm leading-7 text-slate-300">Product teams that value long-term quality over short-term noise.</p>
+              <p className="mt-2 text-sm leading-7 text-slate-300">Product teams that want an engineer who can own backend depth and ship practical AI with confidence.</p>
             </div>
           </div>
         </motion.div>

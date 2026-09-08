@@ -60,7 +60,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
           >
-            Building production-grade applications across Java, Spring, Angular, and applied AI systems with a strong focus on clarity, stability, and measurable outcomes.
+            {profile.tagline}
           </motion.h2>
 
           <motion.p

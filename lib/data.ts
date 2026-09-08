@@ -1,5 +1,6 @@
 export interface Profile {
   name: string
+  avatarUrl?: string
   firstName: string
   lastName: string
   headline: string
@@ -101,14 +102,15 @@ export interface LeadershipItem {
 
 export const profile: Profile = {
   name: 'Maanav Ghai',
+  avatarUrl: '/Profile%20pic.jpeg',
   firstName: 'Maanav',
   lastName: 'Ghai',
   headline: 'Full-Stack AI Engineer',
-  headlineFull: 'Full-Stack AI Engineer | Java • Spring Boot • Angular • Spring AI • RAG • LLMs',
-  tagline: 'Java, Spring Boot, Angular, Spring AI, RAG, and LLM systems for real production products.',
-  summary: 'Full-stack AI engineer shipping production enterprise systems at Infosys, where he builds Spring AI and retrieval-augmented generation features into live applications while leading a four-member team across eight microservices. His work sits at the intersection of backend architecture, AI integration, clean frontend delivery, and measurable product impact.',
-  summaryShort: 'Full-stack AI engineer building enterprise-grade AI products, secure microservices, and polished user experiences.',
-  recruiterSummary: 'A strong fit for teams that need someone who can bridge backend systems, AI feature delivery, and product-minded execution without losing technical depth.',
+  headlineFull: 'Full-Stack AI Engineer | Product-Driven Builder | Java • Spring Boot • Angular • Spring AI',
+  tagline: 'I turn complex backend and AI problems into reliable products people actually enjoy using.',
+  summary: 'I am a full-stack AI engineer at Infosys, building production Spring AI and retrieval-augmented systems across enterprise microservices. I enjoy turning ambiguous requirements into clean architecture, secure APIs, and polished user experiences, while mentoring teammates and keeping delivery momentum high.',
+  summaryShort: 'I build enterprise AI products with strong backend foundations, practical UX, and measurable impact.',
+  recruiterSummary: 'I am strongest in roles where backend depth, AI integration, and product thinking must work together, not in silos.',
   location: 'India',
   email: 'maanavg14@gmail.com',
   availability: 'Open to full-time product engineering roles, applied AI engineering teams, and selective high-impact collaborations.',
@@ -120,10 +122,10 @@ export const profile: Profile = {
     portfolio: 'https://maanav-ghai-portfolio.vercel.app'
   },
   focusAreas: [
-    'Spring AI and RAG product engineering',
-    'Enterprise Java microservices',
-    'Angular and React frontends',
-    'LLM integration and evaluation-driven workflows'
+    'Production-ready Spring AI and RAG systems',
+    'Enterprise Java microservices and API architecture',
+    'Angular and React interfaces that stay fast and clear',
+    'LLM feature design grounded in business outcomes'
   ]
 }
 
@@ -137,19 +139,19 @@ export const stats: HighlightStat[] = [
 export const recruiterSignals: RecruiterSignal[] = [
   {
     title: 'Already shipping production AI',
-    detail: 'Built Spring AI and RAG features into a live enterprise learning platform instead of only experimenting in side projects.'
+    detail: 'I have implemented Spring AI and RAG features inside a live enterprise learning platform, not just in sandbox demos.'
   },
   {
     title: 'Comfortable with scale and systems',
-    detail: 'Worked across eight microservices, secure auth flows, API contracts, and million-record data systems.'
+    detail: 'I have worked across eight microservices, secure auth flows, API contracts, and million-record data systems.'
   },
   {
     title: 'Shows measurable business impact',
-    detail: 'Repeatedly ties delivery to concrete outcomes like 95 percent time reduction, 30 percent API performance gain, and production workflow automation.'
+    detail: 'I tie engineering execution to outcomes like 95 percent reporting-time reduction, API performance gains, and production workflow automation.'
   },
   {
     title: 'Can operate cross-functionally',
-    detail: 'Led trainees, worked directly with clients, and handled delivery communication along with implementation.'
+    detail: 'I lead trainees, collaborate directly with clients, and own both implementation and delivery communication.'
   }
 ]
 
