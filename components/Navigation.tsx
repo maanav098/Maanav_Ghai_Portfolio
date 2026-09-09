@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import { scrollToSection } from '@/lib/utils'
 import { cn } from '@/lib/utils'
 import { Menu, X, ArrowUpRight } from 'lucide-react'
@@ -94,9 +95,11 @@ export function Navigation() {
             className="group flex items-center gap-2.5 text-left sm:gap-3"
           >
             {!avatarLoadError && profile.avatarUrl ? (
-              <img
+              <Image
                 src={profile.avatarUrl}
                 alt={`${profile.name} avatar`}
+                width={36}
+                height={36}
                 onError={() => setAvatarLoadError(true)}
                 className="h-9 w-9 rounded-2xl border border-cyan-300/35 object-cover shadow-[0_0_24px_rgba(34,211,238,0.22)] transition-transform duration-300 group-hover:scale-105"
               />

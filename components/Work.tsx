@@ -37,13 +37,13 @@ export function Work() {
           <p className="section-copy mt-4">
             Real production responsibilities, technical scope, and practical impact.
           </p>
-          <p className="mt-3 text-sm text-slate-500">Use “Show full role details” inside each experience card for the complete breakdown.</p>
+          <p className="mt-3 text-sm text-slate-400">Use &ldquo;Show full role details&rdquo; inside each experience card for the complete breakdown.</p>
         </motion.div>
 
-        <div>
+        <div className="panel spotlight-border rounded-[24px] p-4 sm:p-6">
           <div className="mb-4 flex items-center justify-between gap-4">
             <h3 className="font-display text-2xl font-semibold tracking-[-0.04em] text-white sm:text-3xl">Experience</h3>
-            <span className="text-xs uppercase tracking-[0.2em] text-slate-500">Timeline</span>
+            <span className="rounded-full border border-cyan-300/30 bg-cyan-300/10 px-3 py-1 text-xs uppercase tracking-[0.2em] text-cyan-100">Timeline</span>
           </div>
 
           <div className="space-y-4">
@@ -53,10 +53,10 @@ export function Work() {
           </div>
         </div>
 
-        <div className="mt-10">
+        <div className="panel spotlight-border mt-8 rounded-[24px] p-4 sm:p-6">
           <div className="mb-4 flex items-center justify-between gap-4">
             <h3 className="font-display text-2xl font-semibold tracking-[-0.04em] text-white sm:text-3xl">Selected Projects</h3>
-            <span className="text-xs uppercase tracking-[0.2em] text-slate-500">Case Studies</span>
+            <span className="rounded-full border border-cyan-300/30 bg-cyan-300/10 px-3 py-1 text-xs uppercase tracking-[0.2em] text-cyan-100">Case Studies</span>
           </div>
 
           <div className="grid gap-4 lg:grid-cols-2">

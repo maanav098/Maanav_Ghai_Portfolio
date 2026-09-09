@@ -28,15 +28,16 @@ export function EducationSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.85, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
               viewport={{ once: true }}
-              className="panel rounded-[18px] p-5 sm:p-6"
+              className="panel panel-hover spotlight-border rounded-[22px] p-5 sm:p-6"
             >
               <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
                 <div>
+                  <p className="mb-2 text-[11px] uppercase tracking-[0.2em] text-cyan-200/90">Academic Base</p>
                   <h3 className="font-display text-2xl font-semibold tracking-[-0.03em] text-white">{item.school}</h3>
-                  <p className="mt-2 text-base text-slate-300">{item.degree} in {item.field}</p>
+                  <p className="mt-2 text-base text-slate-200">{item.degree} in {item.field}</p>
                   {item.gpa && <p className="mt-2 text-sm text-slate-500">{item.gpa}</p>}
                 </div>
-                <div className="rounded-full border border-white/10 px-3 py-1.5 text-xs uppercase tracking-[0.14em] text-slate-400">
+                <div className="rounded-full border border-cyan-300/25 bg-cyan-300/10 px-3 py-1.5 text-xs uppercase tracking-[0.14em] text-cyan-100">
                   {formatDate(item.startDate)} - {formatDate(item.endDate)}
                 </div>
               </div>

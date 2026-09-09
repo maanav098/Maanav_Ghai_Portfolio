@@ -27,7 +27,7 @@ export function LeadershipSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.85, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
               viewport={{ once: true }}
-              className="panel rounded-[18px] p-5 sm:p-6"
+              className="panel panel-hover spotlight-border rounded-[22px] p-5 sm:p-6"
             >
               <div className="grid gap-5 lg:grid-cols-[0.85fr_1.15fr]">
                 <div>
@@ -36,7 +36,7 @@ export function LeadershipSection() {
                 </div>
                 <div>
                   <p className="text-sm leading-7 text-slate-300 sm:text-base">{item.description}</p>
-                  <p className="mt-4 text-sm leading-7 text-blue-300 sm:text-base">{item.impact}</p>
+                  <p className="mt-4 rounded-xl border border-cyan-300/20 bg-cyan-300/8 px-3 py-2 text-sm leading-7 text-cyan-100 sm:text-base">{item.impact}</p>
                 </div>
               </div>
             </motion.div>

@@ -19,9 +19,9 @@ export function About() {
             <h2 className="section-title text-left">I build calm systems for complex products.</h2>
             <p className="section-copy max-w-xl">{profile.summary}</p>
 
-            <div className="space-y-2 rounded-xl border border-white/10 bg-white/[0.02] p-4">
+            <div className="glass-chip space-y-2 rounded-2xl border p-4 sm:p-5">
               <p className="text-xs uppercase tracking-[0.18em] text-slate-500">Quick Summary</p>
-              <p className="text-sm leading-7 text-slate-300">{profile.recruiterSummary}</p>
+              <p className="text-sm leading-7 text-slate-200">{profile.recruiterSummary}</p>
             </div>
           </div>
 
@@ -33,8 +33,9 @@ export function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
                 viewport={{ once: true }}
-                className="panel rounded-xl p-4"
+                className="panel panel-hover spotlight-border rounded-2xl p-4"
               >
+                <p className="mb-1 text-[11px] uppercase tracking-[0.18em] text-cyan-200/90">Metric</p>
                 <p className="font-display text-2xl font-semibold leading-none tracking-[-0.03em] text-white">{stat.value}</p>
                 <p className="mt-1 text-sm text-slate-300">{stat.label}</p>
                 {stat.note && <p className="mt-1 text-xs leading-6 text-slate-500">{stat.note}</p>}
@@ -48,20 +49,20 @@ export function About() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true }}
-          className="panel mt-10 rounded-[22px] p-6 sm:p-8"
+          className="panel spotlight-border mt-10 rounded-[24px] p-6 sm:p-8"
         >
           <div className="grid gap-5 lg:grid-cols-3">
-            <div>
+            <div className="rounded-2xl border border-white/10 bg-black/15 p-4">
               <p className="text-xs uppercase tracking-[0.18em] text-slate-500">What I build</p>
-              <p className="mt-2 text-sm leading-7 text-slate-300">Secure, scalable products where backend architecture and AI features feel seamless to the end user.</p>
+              <p className="mt-2 text-sm leading-7 text-slate-200">Secure, scalable products where backend architecture and AI features feel seamless to the end user.</p>
             </div>
-            <div>
+            <div className="rounded-2xl border border-white/10 bg-black/15 p-4">
               <p className="text-xs uppercase tracking-[0.18em] text-slate-500">How I work</p>
-              <p className="mt-2 text-sm leading-7 text-slate-300">I move from ambiguity to clarity fast, write maintainable code, and keep teams aligned through direct communication.</p>
+              <p className="mt-2 text-sm leading-7 text-slate-200">I move from ambiguity to clarity fast, write maintainable code, and keep teams aligned through direct communication.</p>
             </div>
-            <div>
+            <div className="rounded-2xl border border-white/10 bg-black/15 p-4">
               <p className="text-xs uppercase tracking-[0.18em] text-slate-500">Best fit</p>
-              <p className="mt-2 text-sm leading-7 text-slate-300">Product teams that want an engineer who can own backend depth and ship practical AI with confidence.</p>
+              <p className="mt-2 text-sm leading-7 text-slate-200">Product teams that want an engineer who can own backend depth and ship practical AI with confidence.</p>
             </div>
           </div>
         </motion.div>

@@ -29,10 +29,11 @@ export function Skills() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
               viewport={{ once: true }}
-              className="panel rounded-[18px] p-5 sm:p-6"
+              className="panel panel-hover spotlight-border rounded-[22px] p-5 sm:p-6"
             >
+              <p className="mb-2 text-[11px] uppercase tracking-[0.2em] text-cyan-200/90">Capability 0{index + 1}</p>
               <h3 className="font-display text-xl font-semibold tracking-[-0.03em] text-white sm:text-2xl">{pillar.title}</h3>
-              <p className="mt-2 text-sm leading-7 text-slate-400 sm:text-base">{pillar.description}</p>
+              <p className="mt-2 text-sm leading-7 text-slate-300 sm:text-base">{pillar.description}</p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {pillar.skills.map((skill) => (
                   <span key={skill} className="tag">{skill}</span>
@@ -47,12 +48,12 @@ export function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true }}
-          className="panel mt-8 rounded-[18px] p-5 sm:p-6"
+          className="panel spotlight-border mt-8 rounded-[22px] p-5 sm:p-6"
         >
           <h3 className="font-display text-xl font-semibold tracking-[-0.03em] text-white">Tooling and stack</h3>
           <div className="mt-4 grid gap-4 md:grid-cols-2">
             {skills.map((skillCategory) => (
-              <div key={skillCategory.category}>
+              <div key={skillCategory.category} className="rounded-2xl border border-white/10 bg-black/15 p-4">
                 <p className="text-xs uppercase tracking-[0.16em] text-slate-500">{skillCategory.category}</p>
                 <div className="mt-2 flex flex-wrap gap-2">
                   {skillCategory.items.map((skill) => (

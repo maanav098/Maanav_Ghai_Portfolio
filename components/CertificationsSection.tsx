@@ -27,8 +27,9 @@ export function CertificationsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.85, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
               viewport={{ once: true }}
-              className="panel rounded-[18px] p-5"
+              className="panel panel-hover spotlight-border rounded-[22px] p-5"
             >
+              <p className="mb-2 text-[11px] uppercase tracking-[0.2em] text-cyan-200/90">Credential</p>
               <p className="text-xs uppercase tracking-[0.16em] text-slate-500">{item.issuer}</p>
               <h3 className="mt-3 font-display text-xl font-semibold tracking-[-0.02em] text-white">{item.name}</h3>
             </motion.div>
