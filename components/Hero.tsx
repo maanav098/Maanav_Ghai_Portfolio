@@ -11,7 +11,7 @@ import {
   MapPin,
   Mail,
 } from 'lucide-react'
-import { profile } from '@/lib/data'
+import { profile, stats } from '@/lib/data'
 
 export function Hero() {
   const { scrollY } = useScroll()
@@ -19,13 +19,13 @@ export function Hero() {
   const rightOrbY = useTransform(scrollY, [0, 700], [0, -90])
 
   return (
-    <section id="hero" className="relative flex min-h-[76svh] items-center overflow-hidden px-6 pb-8 pt-28 sm:px-8 sm:pt-24 lg:px-12">
+    <section id="hero" className="relative flex min-h-[80svh] items-center overflow-hidden px-6 pb-8 pt-28 sm:px-8 sm:pt-24 lg:px-12">
       <div className="absolute inset-0 -z-10">
-        <motion.div style={{ y: leftOrbY }} className="absolute left-0 top-24 h-72 w-72 rounded-full bg-blue-500/8 blur-[120px]" />
-        <motion.div style={{ y: rightOrbY }} className="absolute right-0 top-20 h-80 w-80 rounded-full bg-sky-400/6 blur-[130px]" />
+        <motion.div style={{ y: leftOrbY }} className="absolute left-0 top-24 h-80 w-80 rounded-full bg-cyan-400/10 blur-[125px]" />
+        <motion.div style={{ y: rightOrbY }} className="absolute right-0 top-20 h-96 w-96 rounded-full bg-amber-300/10 blur-[150px]" />
       </div>
 
-      <div className="section-inner relative z-10 grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+      <div className="section-inner relative z-10 grid gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -33,13 +33,13 @@ export function Hero() {
           className="max-w-4xl"
         >
           <motion.div
-            className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.02] px-4 py-1.5 text-xs font-medium text-slate-200 sm:text-sm"
+            className="glass-chip mb-6 inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-xs font-medium text-slate-100 sm:text-sm"
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           >
-            <Briefcase className="h-4 w-4 text-blue-300" />
-            Full-Stack AI Engineer
+            <Briefcase className="h-4 w-4 text-cyan-200" />
+            Available for high-impact product teams
           </motion.div>
 
           <motion.h1
@@ -48,7 +48,8 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           >
-            {profile.name}
+            {profile.firstName}
+            <span className="headline-gradient"> {profile.lastName}</span>
             <span className="mt-3 block text-base font-medium tracking-[-0.01em] text-slate-300 sm:text-lg lg:text-[1.2rem]">
               {profile.headline}
             </span>
@@ -71,6 +72,22 @@ export function Hero() {
           >
             {profile.summaryShort}
           </motion.p>
+
+          <motion.div
+            className="mt-6 flex flex-wrap gap-2.5"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.48, ease: [0.22, 1, 0.36, 1] }}
+          >
+            {profile.focusAreas.slice(0, 3).map((focus) => (
+              <span
+                key={focus}
+                className="glass-chip inline-flex items-center rounded-full border px-3 py-1.5 text-xs font-medium text-slate-100 sm:text-sm"
+              >
+                {focus}
+              </span>
+            ))}
+          </motion.div>
 
           <motion.div
             className="mt-6 flex flex-col gap-3 sm:flex-row"
@@ -113,11 +130,11 @@ export function Hero() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-          className="panel rounded-[18px] p-5 sm:p-6"
+          className="panel rounded-[22px] p-5 sm:p-6"
         >
           <div className="mb-6 flex items-center gap-3">
             <MapPin className="h-4 w-4 text-slate-400" />
-            <p className="text-sm font-medium text-slate-300">Current role and focus</p>
+            <p className="text-sm font-medium text-slate-200">Current role and focus</p>
           </div>
 
           <div className="space-y-6">
@@ -135,8 +152,20 @@ export function Hero() {
               <p className="text-xs uppercase tracking-[0.22em] text-slate-500">Primary strengths</p>
               <div className="mt-3 grid gap-2">
                 {['Applied AI integration', 'Backend system design', 'Clear product execution'].map((item) => (
-                  <div key={item} className="rounded-xl border border-white/10 bg-white/[0.02] px-3 py-2 text-sm text-slate-200">
+                  <div key={item} className="glass-chip rounded-xl border px-3 py-2 text-sm text-slate-100">
                     {item}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <p className="text-xs uppercase tracking-[0.22em] text-slate-500">Delivery outcomes</p>
+              <div className="mt-3 grid grid-cols-3 gap-2">
+                {stats.slice(0, 3).map((item) => (
+                  <div key={item.label} className="rounded-xl border border-white/10 bg-black/15 p-3">
+                    <p className="font-display text-lg font-semibold tracking-[-0.03em] text-white">{item.value}</p>
+                    <p className="mt-1 text-[11px] leading-5 text-slate-300">{item.label}</p>
                   </div>
                 ))}
               </div>
