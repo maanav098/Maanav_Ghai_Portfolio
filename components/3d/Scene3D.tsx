@@ -1,7 +1,7 @@
 'use client';
 
 import { Canvas } from '@react-three/fiber';
-import { Suspense, useEffect, useState } from 'react';
+import { Suspense, useEffect, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
 
 interface Scene3DProps {
@@ -28,8 +28,10 @@ export default function Scene3D({
   performance = 'medium',
   pauseOnHidden = true,
 }: Scene3DProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
   const [hasWebGL, setHasWebGL] = useState(true);
   const [isVisible, setIsVisible] = useState(true);
+  const [isInViewport, setIsInViewport] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
 
   // WebGL detection
@@ -65,10 +67,26 @@ export default function Scene3D({
     };
   }, [pauseOnHidden]);
 
+  // Pause rendering when the scene is far outside the viewport.
+  useEffect(() => {
+    const target = containerRef.current;
+    if (!target) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInViewport(entry.isIntersecting);
+      },
+      { root: null, threshold: 0, rootMargin: '220px 0px 220px 0px' }
+    );
+
+    observer.observe(target);
+    return () => observer.disconnect();
+  }, []);
+
   // Adjust DPR based on performance mode and device
   const getDPR = () => {
-    if (performance === 'low' || isMobile) return [0.5, 1] as [number, number];
-    if (performance === 'medium') return [1, 1.5] as [number, number];
+    if (performance === 'low' || isMobile) return [0.5, 0.95] as [number, number];
+    if (performance === 'medium') return [0.75, 1.2] as [number, number];
     return dpr as [number, number];
   };
 
@@ -81,14 +99,16 @@ export default function Scene3D({
 
   return (
     <div
+      ref={containerRef}
       className={cn('relative', className)}
       role="img"
       aria-label="3D interactive scene"
     >
       <Canvas
+        frameloop={isVisible && isInViewport ? 'always' : 'never'}
         dpr={getDPR()}
-        camera={{ position: [0, 0, 5], fov: 50 }}
-        style={{ opacity: isVisible ? 1 : 0.5 }}
+        camera={{ position: [0, 0, 6.2], fov: 48 }}
+        style={{ opacity: isVisible && isInViewport ? 1 : 0.45 }}
         gl={{
           antialias: performance !== 'low',
           alpha: true,

@@ -1,7 +1,9 @@
 'use client'
 
+import { useEffect, useMemo, useState } from 'react'
+import { useRef } from 'react'
 import { motion } from 'framer-motion'
-import { useScroll, useTransform } from 'framer-motion'
+import { useInView, useReducedMotion } from 'framer-motion'
 import {
   Download,
   ArrowRight,
@@ -12,35 +14,120 @@ import {
   Mail,
 } from 'lucide-react'
 import { profile, stats } from '@/lib/data'
+import { BlackHoleHeroSection } from '@/components/ui/blackhole-hero-section'
+
+function useNarrow(query = '(max-width: 767px)') {
+  const [narrow, setNarrow] = useState(false)
+
+  useEffect(() => {
+    const media = window.matchMedia(query)
+    const sync = () => setNarrow(media.matches)
+    sync()
+    media.addEventListener('change', sync)
+    return () => media.removeEventListener('change', sync)
+  }, [query])
+
+  return narrow
+}
 
 export function Hero() {
-  const { scrollY } = useScroll()
-  const leftOrbY = useTransform(scrollY, [0, 700], [0, 110])
-  const rightOrbY = useTransform(scrollY, [0, 700], [0, -90])
+  const sectionRef = useRef<HTMLElement | null>(null)
+  const cardRef = useRef<HTMLDivElement | null>(null)
+  const lastPointerUpdate = useRef(0)
+  const isInView = useInView(sectionRef, { amount: 0.2 })
+  const narrow = useNarrow()
+  const reduceMotion = useReducedMotion()
+  const [isCalmMode, setIsCalmMode] = useState(false)
+  const [pointer, setPointer] = useState({ x: 0, y: 0 })
+
+  const reactiveMotionEnabled = !reduceMotion && !isCalmMode
+
+  const focus = useMemo<[number, number]>(() => {
+    const baseX = narrow ? 0.5 : 0.72
+    const baseY = narrow ? 0.78 : 0.46
+    const x = Math.min(0.86, Math.max(0.36, baseX + pointer.x * (narrow ? 0.03 : 0.05)))
+    const y = Math.min(0.86, Math.max(0.28, baseY + pointer.y * (narrow ? 0.03 : 0.05)))
+    return [x, y]
+  }, [narrow, pointer.x, pointer.y])
+
+  const elevation = (narrow ? -7 : -5.8) + (reactiveMotionEnabled ? pointer.y * 1.4 : 0)
+  const azimuth = reactiveMotionEnabled ? pointer.x * 8 : 0
+  const cardTilt = reactiveMotionEnabled
+    ? { rotateX: -pointer.y * 4.2, rotateY: pointer.x * 5.5 }
+    : { rotateX: 0, rotateY: 0 }
+
+  const handlePointerMove = (event: React.PointerEvent<HTMLElement>) => {
+    if (!reactiveMotionEnabled) return
+
+    const now = performance.now()
+    if (now - lastPointerUpdate.current < 32) return
+    lastPointerUpdate.current = now
+
+    const rect = event.currentTarget.getBoundingClientRect()
+    const x = ((event.clientX - rect.left) / rect.width) * 2 - 1
+    const y = ((event.clientY - rect.top) / rect.height) * 2 - 1
+    setPointer({ x, y })
+  }
+
+  const handlePointerLeave = () => {
+    setPointer({ x: 0, y: 0 })
+  }
 
   return (
-    <section id="hero" className="relative flex min-h-[80svh] items-center overflow-hidden px-6 pb-8 pt-28 sm:px-8 sm:pt-24 lg:px-12">
-      <div className="absolute inset-0 -z-10">
-        <motion.div style={{ y: leftOrbY }} className="absolute left-0 top-24 h-80 w-80 rounded-full bg-cyan-400/10 blur-[125px]" />
-        <motion.div style={{ y: rightOrbY }} className="absolute right-0 top-20 h-96 w-96 rounded-full bg-amber-300/10 blur-[150px]" />
-      </div>
-
-      <div className="section-inner relative z-10 grid gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
+    <section
+      ref={sectionRef}
+      id="hero"
+      onPointerMove={handlePointerMove}
+      onPointerLeave={handlePointerLeave}
+      className="relative overflow-hidden px-6 pb-8 pt-28 sm:px-8 sm:pt-24 lg:px-12"
+    >
+      <BlackHoleHeroSection
+        className="min-h-[80svh] rounded-[30px] border border-white/10"
+        focus={focus}
+        scrim={narrow ? 'top' : 'left'}
+        scrimStrength={narrow ? 0.92 : 0.84}
+        distance={24}
+        elevation={elevation}
+        azimuth={azimuth}
+        roll={narrow ? -12 : -18}
+        fov={narrow ? 58 : 42}
+        glow={narrow ? 0.7 : 0.92}
+        steps={reduceMotion ? 110 : isCalmMode ? 130 : narrow ? 165 : 210}
+        resolution={reduceMotion ? 0.48 : isCalmMode ? 0.52 : narrow ? 0.56 : 0.64}
+        maxDpr={narrow ? 1.05 : 1.2}
+        starBrightness={reduceMotion ? 0 : isCalmMode ? 0.015 : 0.05}
+        spinSpeed={reduceMotion ? 0.02 : isCalmMode ? 0.035 : 0.055}
+        paused={Boolean(reduceMotion || !isInView)}
+      >
+      <div className="section-inner relative z-10 grid min-h-[80svh] items-center gap-10 py-8 lg:grid-cols-[1.08fr_0.92fr]">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           className="max-w-4xl"
         >
-          <motion.div
-            className="glass-chip mb-6 inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-xs font-medium text-slate-100 sm:text-sm"
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <Briefcase className="h-4 w-4 text-cyan-200" />
-            Available for high-impact product teams
-          </motion.div>
+          <div className="mb-6 flex flex-wrap items-center gap-3">
+            <motion.div
+              className="glass-chip inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-xs font-medium text-slate-100 sm:text-sm"
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <Briefcase className="h-4 w-4 text-cyan-200" />
+              Available for high-impact product teams
+            </motion.div>
+
+            <button
+              type="button"
+              onClick={() => setIsCalmMode((value) => !value)}
+              className="glass-chip inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-medium text-slate-100 transition-colors hover:text-white"
+              aria-pressed={isCalmMode}
+              aria-label="Toggle calm motion mode"
+            >
+              <span className={`h-2 w-2 rounded-full ${isCalmMode ? 'bg-emerald-300' : 'bg-cyan-300'}`} />
+              {isCalmMode ? 'Calm Mode' : 'Reactive Mode'}
+            </button>
+          </div>
 
           <motion.h1
             className="font-display text-4xl font-semibold tracking-[-0.04em] text-white sm:text-5xl lg:text-[3.55rem] lg:leading-[1.03]"
@@ -106,7 +193,7 @@ export function Hero() {
           </motion.div>
 
           <motion.div
-            className="mt-6 flex flex-wrap items-center gap-4 text-sm text-slate-400"
+            className="mt-6 flex flex-wrap items-center gap-4 text-sm text-slate-300"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
@@ -127,10 +214,12 @@ export function Hero() {
         </motion.div>
 
         <motion.div
+          ref={cardRef}
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-          className="panel rounded-[22px] p-5 sm:p-6"
+          style={cardTilt}
+          className="panel rounded-[22px] border-white/15 bg-black/30 p-5 backdrop-blur-xl sm:p-6"
         >
           <div className="mb-6 flex items-center gap-3">
             <MapPin className="h-4 w-4 text-slate-400" />
@@ -163,7 +252,7 @@ export function Hero() {
               <p className="text-xs uppercase tracking-[0.22em] text-slate-500">Delivery outcomes</p>
               <div className="mt-3 grid grid-cols-3 gap-2">
                 {stats.slice(0, 3).map((item) => (
-                  <div key={item.label} className="rounded-xl border border-white/10 bg-black/15 p-3">
+                  <div key={item.label} className="rounded-xl border border-white/10 bg-black/15 p-3 transition-colors duration-300 hover:border-cyan-300/35">
                     <p className="font-display text-lg font-semibold tracking-[-0.03em] text-white">{item.value}</p>
                     <p className="mt-1 text-[11px] leading-5 text-slate-300">{item.label}</p>
                   </div>
@@ -173,6 +262,7 @@ export function Hero() {
           </div>
         </motion.div>
       </div>
+      </BlackHoleHeroSection>
     </section>
   )
 }

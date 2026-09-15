@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { scrollToSection } from '@/lib/utils'
 import { cn } from '@/lib/utils'
@@ -9,11 +9,8 @@ import { profile } from '@/lib/data'
 
 const navItems = [
   { id: 'about', label: 'About' },
-  { id: 'work', label: 'Experience' },
+  { id: 'work', label: 'Work' },
   { id: 'skills', label: 'Skills' },
-  { id: 'education', label: 'Education' },
-  { id: 'certifications', label: 'Certifications' },
-  { id: 'leadership', label: 'Leadership' },
   { id: 'contact', label: 'Contact' }
 ]
 
@@ -23,19 +20,52 @@ export function Navigation() {
   const [activeSection, setActiveSection] = useState('hero')
   const [scrollProgress, setScrollProgress] = useState(0)
   const [avatarLoadError, setAvatarLoadError] = useState(false)
+  const scrollRafRef = useRef<number | null>(null)
+  const lastIsScrolledRef = useRef(false)
+  const lastProgressRef = useRef(0)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
+    const updateScrollState = () => {
+      scrollRafRef.current = null
+
+      const nextIsScrolled = window.scrollY > 20
+      if (lastIsScrolledRef.current !== nextIsScrolled) {
+        lastIsScrolledRef.current = nextIsScrolled
+        setIsScrolled(nextIsScrolled)
+      }
 
       const scrollTop = window.scrollY
       const docHeight = document.documentElement.scrollHeight - window.innerHeight
-      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0
-      setScrollProgress(progress)
+      const nextProgress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0
+
+      if (Math.abs(lastProgressRef.current - nextProgress) >= 0.25) {
+        lastProgressRef.current = nextProgress
+        setScrollProgress(nextProgress)
+      }
+
+      // The last section can never reach the IntersectionObserver's mid-viewport band once
+      // the page runs out of room to scroll further, so force it active near the bottom.
+      if (docHeight > 0 && docHeight - scrollTop < 4) {
+        setActiveSection(navItems[navItems.length - 1].id)
+      }
     }
 
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    const handleScroll = () => {
+      if (scrollRafRef.current === null) {
+        scrollRafRef.current = window.requestAnimationFrame(updateScrollState)
+      }
+    }
+
+    handleScroll()
+    window.addEventListener('scroll', handleScroll, { passive: true })
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      if (scrollRafRef.current !== null) {
+        window.cancelAnimationFrame(scrollRafRef.current)
+        scrollRafRef.current = null
+      }
+    }
   }, [])
 
   useEffect(() => {
@@ -112,13 +142,13 @@ export function Navigation() {
               <span className="block truncate font-display text-sm font-semibold tracking-[-0.03em] text-white sm:text-base">
                 {profile.name}
               </span>
-              <span className="hidden text-[10px] uppercase tracking-[0.22em] text-slate-500 sm:block">
+              <span className="hidden text-[10px] uppercase tracking-[0.22em] text-slate-500 lg:block">
                 {profile.headline}
               </span>
             </span>
           </button>
 
-          <div className="hidden items-center gap-1 rounded-full border border-white/12 bg-white/[0.05] p-1 backdrop-blur-xl lg:flex">
+          <div className="hidden items-center gap-1 rounded-full border border-white/12 bg-white/[0.05] p-1 backdrop-blur-xl xl:flex">
             {navItems.map((item) => (
               <button
                 key={item.id}
@@ -146,7 +176,7 @@ export function Navigation() {
             </a>
 
             <button
-              className="rounded-full border border-white/10 bg-white/10 p-2 text-slate-200 transition-colors duration-200 hover:text-white lg:hidden"
+              className="rounded-full border border-white/10 bg-white/10 p-2 text-slate-200 transition-colors duration-200 hover:text-white xl:hidden"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle mobile menu"
             >
@@ -157,7 +187,7 @@ export function Navigation() {
 
         <div
           className={cn(
-            'overflow-hidden transition-all duration-300 ease-in-out lg:hidden',
+            'overflow-hidden transition-all duration-300 ease-in-out xl:hidden',
             isMobileMenuOpen ? 'max-h-[540px] opacity-100' : 'max-h-0 opacity-0'
           )}
         >

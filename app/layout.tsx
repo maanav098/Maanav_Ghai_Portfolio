@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { Manrope, Space_Grotesk } from 'next/font/google'
 import './globals.css'
 import { Navigation } from '@/components/Navigation'
-import { FloatingElements } from '@/components/FloatingElements'
 import { profile } from '@/lib/data'
 
 const manrope = Manrope({
@@ -60,7 +59,6 @@ export default function RootLayout({
       </head>
       <body className={`${manrope.variable} ${spaceGrotesk.variable}`}>
         <div className="site-shell">
-          <FloatingElements />
           <Navigation />
           <main className="relative z-10">
             {children}
