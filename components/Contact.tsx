@@ -29,7 +29,7 @@ export function Contact() {
               <Mail className="h-5 w-5" />
               Email Me
             </a>
-            <a href={profile.resumeUrl} download="Maanav_Ghai-Resume.pdf" className="secondary-button">
+            <a href={profile.resumeUrl} download="Maanav_Ghai_Resume.pdf" className="secondary-button">
               <Download className="h-5 w-5" />
               Download Resume
             </a>

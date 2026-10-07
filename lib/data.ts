@@ -106,15 +106,16 @@ export const profile: Profile = {
   firstName: 'Maanav',
   lastName: 'Ghai',
   headline: 'Full-Stack AI Engineer',
-  headlineFull: 'Full-Stack AI Engineer | Product-Driven Builder | Java • Spring Boot • Angular • Spring AI',
-  tagline: 'I turn complex backend and AI problems into reliable products people actually enjoy using.',
-  summary: 'I am a full-stack AI engineer at Infosys, building production Spring AI and retrieval-augmented systems across enterprise microservices. I enjoy turning ambiguous requirements into clean architecture, secure APIs, and polished user experiences, while mentoring teammates and keeping delivery momentum high.',
-  summaryShort: 'I build enterprise AI products with strong backend foundations, practical UX, and measurable impact.',
-  recruiterSummary: 'I am strongest in roles where backend depth, AI integration, and product thinking must work together, not in silos.',
+  headlineFull: 'Full-Stack AI Engineer | Java • Spring Boot • Angular • Spring AI • RAG • LLMs',
+  tagline: 'I build dependable backend systems and practical AI features with a bias toward product impact, clean engineering, and learning fast in real teams.',
+  summary: 'I am an early-career software engineer with hands-on experience building Java, Spring Boot, Angular, and AI-enabled systems in real enterprise environments. My work spans microservices, REST APIs, auth and access control, data handling, and retrieval-based AI features where business context matters. What I bring is not just technical execution, but product judgment: I understand how to translate requirements into reliable systems, debug under constraints, and keep shipping improvements that are measurable and useful.',
+  summaryShort: 'Early-career engineer building reliable Java and AI systems with a strong bias toward product value and practical execution.',
+  recruiterSummary: 'Best suited for entry-level or early-career roles where backend fundamentals, AI curiosity, and product thinking matter more than title.',
   location: 'India',
   email: 'maanavg14@gmail.com',
-  availability: 'Open to full-time product engineering roles, applied AI engineering teams, and selective high-impact collaborations.',
-  resumeUrl: '/Maanav_Ghai-Resume.pdf',
+  phone: '+91 9560186823',
+  availability: 'Open to full-time product engineering roles, applied AI engineering teams, and high-impact backend + AI product opportunities.',
+  resumeUrl: '/Maanav_Ghai_Resume.pdf',
   siteUrl: 'https://maanav-ghai-portfolio.vercel.app',
   social: {
     github: 'https://github.com/maanav098',
@@ -138,20 +139,20 @@ export const stats: HighlightStat[] = [
 
 export const recruiterSignals: RecruiterSignal[] = [
   {
-    title: 'Already shipping production AI',
-    detail: 'I have implemented Spring AI and RAG features inside a live enterprise learning platform, not just in sandbox demos.'
+    title: 'Building in production, not just demos',
+    detail: 'I have implemented Spring AI and RAG features inside a live enterprise learning platform, which matters more than showcasing a toy prototype in isolation.'
   },
   {
-    title: 'Comfortable with scale and systems',
-    detail: 'I have worked across eight microservices, secure auth flows, API contracts, and million-record data systems.'
+    title: 'Comfortable with systems, not just feature code',
+    detail: 'I have worked across microservices, secure auth flows, API contracts, and million-record data systems where reliability and consistency really matter.'
   },
   {
-    title: 'Shows measurable business impact',
-    detail: 'I tie engineering execution to outcomes like 95 percent reporting-time reduction, API performance gains, and production workflow automation.'
+    title: 'I care about outcomes, not just code output',
+    detail: 'My work is tied to measurable improvements such as reporting-time reduction, workflow automation, and better delivery clarity for real users.'
   },
   {
-    title: 'Can operate cross-functionally',
-    detail: 'I lead trainees, collaborate directly with clients, and own both implementation and delivery communication.'
+    title: 'Good teammate energy and ownership',
+    detail: 'I am comfortable collaborating with clients, supporting other engineers, and taking responsibility for delivery quality without waiting for perfect conditions.'
   }
 ]
 
@@ -284,17 +285,17 @@ export const projects: Project[] = [
   {
     id: 'intprep',
     title: 'IntPrep',
-    subtitle: 'AI-Powered Interview Preparation and Evaluation Platform',
-    description: 'An AI-native interview platform that parses resumes, adapts questions by role, and evaluates answers through multiple scoring signals.',
-    problem: 'Interview preparation tools often feel generic and fail to adapt to a candidate profile, target role, and response quality in a grounded way.',
-    solution: 'Built a FastAPI and Llama3/Ollama platform that uses pdfplumber and spaCy for resume parsing, generates adaptive interview questions, and combines keyword matching, embedding-based similarity, and LLM feedback for evaluation.',
+    subtitle: 'AI Interview Practice Platform',
+    description: 'A full-stack interview practice platform built with FastAPI, React/TypeScript, Docker, and Terraform-managed AWS EC2 infrastructure.',
+    problem: 'Most interview prep tools are generic and fail to align questions to a candidate’s resume, role target, and company context while also providing grounded, trustworthy evaluation.',
+    solution: 'Built a full-stack platform with two LLM grounding pipelines: company-aware question sourcing via cached web search and resume-grounded generation with verbatim-substring checks to reduce hallucinated citations; added WorkOS OAuth2 login, sandboxed coding, Whisper voice answers, and recruiter-side JD analysis with shortlist/hold/reject flow.',
     role: 'AI Product Engineer',
     impact: [
-      'Adaptive question generation across multiple job categories',
-      'Three-signal evaluation engine with semantic similarity and LLM feedback',
-      'Role-specific response analytics and rubric-based scoring'
+      'Company-aware question sourcing improved role-specific prep quality and reduced irrelevant prompts',
+      'Resume-grounded citation checks cut hallucinated references from 12% to 1.6% across 25+ runs',
+      'Added recruiter dashboard for JD analysis, applicant transcripts, and decisioning workflow'
     ],
-    tech: ['FastAPI', 'Llama3', 'Ollama', 'pdfplumber', 'spaCy', 'nomic-embed-text', 'Python'],
+    tech: ['FastAPI', 'React', 'TypeScript', 'LLMs', 'Docker', 'Terraform', 'AWS EC2', 'WorkOS', 'OAuth2', 'Python'],
     github: 'https://github.com/maanav098',
     category: 'AI',
     featured: true

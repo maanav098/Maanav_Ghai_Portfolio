@@ -15,7 +15,6 @@ export function Hero() {
   })
 
   const cardY = useTransform(scrollYProgress, [0, 1], [0, 120])
-  const cardRotate = useTransform(scrollYProgress, [0, 1], [0, -3])
   const glowOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0])
   const contentY = useTransform(scrollYProgress, [0, 1], [0, -60])
 
@@ -82,7 +81,7 @@ export function Hero() {
               className="mt-9 flex flex-col gap-3 sm:flex-row"
             >
               <MagneticButton>
-                <a href={profile.resumeUrl} download="Maanav_Ghai-Resume.pdf" className="primary-button">
+                <a href={profile.resumeUrl} download="Maanav_Ghai_Resume.pdf" className="primary-button">
                   <Download className="h-5 w-5" />
                   Download Resume
                 </a>
@@ -130,7 +129,7 @@ export function Hero() {
           </div>
 
           <motion.div
-            style={{ y: cardY, rotate: cardRotate }}
+            style={{ y: cardY }}
             initial={{ opacity: 0, scale: 0.94 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}

@@ -182,7 +182,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
           >
-            <a href={profile.resumeUrl} download="Maanav_Ghai-Resume.pdf" className="primary-button">
+            <a href={profile.resumeUrl} download="Maanav_Ghai_Resume.pdf" className="primary-button">
               <Download className="h-5 w-5" />
               Download Resume
             </a>

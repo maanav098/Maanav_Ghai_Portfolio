@@ -95,7 +95,7 @@ export function Contact() {
             </div>
 
             <MagneticButton className="mt-6 block w-full">
-              <a href={profile.resumeUrl} download="Maanav_Ghai-Resume.pdf" className="secondary-button w-full">
+              <a href={profile.resumeUrl} download="Maanav_Ghai_Resume.pdf" className="secondary-button w-full">
                 <Download className="h-5 w-5" />
                 Download Resume
               </a>
@@ -128,7 +128,7 @@ export function Contact() {
                     required
                     value={email}
                     onChange={(event) => setEmail(event.target.value)}
-                    placeholder="you@company.com"
+                    placeholder="yourname@gmail.com"
                     className="form-field"
                   />
                 </div>

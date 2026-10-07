@@ -168,7 +168,7 @@ export function Navigation() {
           <div className="flex items-center gap-4">
             <a
               href={profile.resumeUrl}
-              download="Maanav_Ghai-Resume.pdf"
+              download="Maanav_Ghai_Resume.pdf"
               className="hidden items-center gap-2 rounded-full border border-cyan-300/35 bg-cyan-400/10 px-3 py-1.5 text-xs font-medium text-cyan-100 transition-all duration-300 hover:border-cyan-300/50 hover:bg-cyan-400/16 md:inline-flex"
             >
               Resume
@@ -208,7 +208,7 @@ export function Navigation() {
             ))}
             <a
               href={profile.resumeUrl}
-              download="Maanav_Ghai-Resume.pdf"
+              download="Maanav_Ghai_Resume.pdf"
               className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-cyan-500 to-sky-500 px-4 py-3 text-sm font-semibold text-white shadow-[0_16px_40px_rgba(8,145,178,0.35)]"
             >
               Download Resume
