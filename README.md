@@ -153,6 +153,11 @@ Edit `lib/data.ts` to update:
 2. Add to navigation in `Navigation.tsx`
 3. Include in main page `app/page.tsx`
 
+### GitHub Contributions
+The contribution graph reads the latest year of activity from the GitHub profile configured in `lib/data.ts`. It refreshes when the page opens, when the tab becomes visible again, and every 30 minutes while the page is open.
+
+By default, it displays contributions GitHub makes publicly available. To include private-repository contribution counts, add a GitHub token with `read:user` access as the `GITHUB_TOKEN` environment variable in the hosting provider (for example, Vercel project settings). Keep the token server-side; do not prefix it with `NEXT_PUBLIC_` or commit it to the repository.
+
 ## 🎯 Key Sections
 
 ### Hero Section

@@ -8,6 +8,7 @@ import { Projects } from '@/components/sections/Projects'
 import { Skills } from '@/components/sections/Skills'
 import { Testimonials } from '@/components/sections/Testimonials'
 import { Contact } from '@/components/sections/Contact'
+import { ContributionGraph } from '@/components/sections/ContributionGraph'
 
 export function PremiumLanding() {
   return (
@@ -18,6 +19,9 @@ export function PremiumLanding() {
 
       <div className="section-divider" />
       <About />
+
+      <div className="section-divider" />
+      <ContributionGraph />
 
       <div className="section-divider" />
       <section id="work" className="section-shell">
