@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { ArrowUpRight, ExternalLink, FileText, Github, Sparkles } from 'lucide-react'
 import { projects } from '@/lib/data'
@@ -31,19 +32,56 @@ export function Projects() {
               transition={{ duration: 0.55, delay: (index % 3) * 0.08, ease: [0.22, 1, 0.36, 1] }}
               className="flex h-full flex-col"
             >
-              <TiltCard max={4} className="relative h-full overflow-hidden rounded-[24px] border border-white/12 p-1">
+              <TiltCard max={4} className="group relative h-full overflow-hidden rounded-[24px] border border-white/12 p-1">
                 <div
-                  className="flex h-full min-h-[270px] flex-col rounded-[20px] p-5 sm:p-6"
+                  className="relative flex h-full min-h-[270px] flex-col overflow-hidden rounded-[20px] p-5 sm:p-6"
                   style={{ background: gradients[index % gradients.length] }}
                 >
-                  <div className="flex items-center justify-between">
+                  {project.image && (
+                    <div
+                      className="pointer-events-none absolute inset-0 bg-cover bg-top opacity-[0.08] transition-opacity duration-700 ease-out group-hover:opacity-20"
+                      style={{ backgroundImage: `url(${project.image})` }}
+                      aria-hidden="true"
+                    />
+                  )}
+
+                  <div className="relative z-10 flex items-center justify-between">
                     <span className="rounded-full border border-cyan-300/30 bg-cyan-300/10 px-3 py-1 text-[11px] uppercase tracking-[0.16em] text-cyan-100">
                       {project.category ?? 'Project'}
                     </span>
                     <Sparkles className="h-5 w-5 text-cyan-200/80" />
                   </div>
 
-                  <div className="mt-8 flex flex-1 flex-col">
+                  {project.image && (
+                    <div className="group/mockup relative z-10 mt-5 overflow-hidden rounded-xl border border-white/15 bg-black/50 shadow-2xl transition-all duration-300 hover:border-cyan-400/50">
+                      <div className="flex items-center justify-between border-b border-white/10 bg-slate-950/80 px-3 py-1.5 backdrop-blur-sm">
+                        <div className="flex items-center gap-1.5">
+                          <span className="h-2 w-2 rounded-full bg-rose-500/70" />
+                          <span className="h-2 w-2 rounded-full bg-amber-500/70" />
+                          <span className="h-2 w-2 rounded-full bg-emerald-500/70" />
+                        </div>
+                        <span className="truncate font-mono text-[10px] text-slate-400">
+                          {project.demo ? project.demo.replace('https://', '') : project.title.toLowerCase() + '.app'}
+                        </span>
+                        <span className="text-[10px] font-semibold uppercase tracking-wider text-cyan-300">
+                          Live UI
+                        </span>
+                      </div>
+                      <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-950">
+                        <Image
+                          src={project.image}
+                          alt={`${project.title} live interface preview`}
+                          width={600}
+                          height={375}
+                          className="h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover/mockup:scale-105"
+                          loading="lazy"
+                        />
+                        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="relative z-10 mt-6 flex flex-1 flex-col">
                     <h3 className="font-display text-2xl font-semibold tracking-[-0.04em] text-white">
                       {project.title}
                     </h3>

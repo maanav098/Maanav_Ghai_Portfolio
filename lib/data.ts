@@ -289,7 +289,8 @@ export const projects: Project[] = [
     demo: 'https://intprep.behavior.systems',
     caseStudy: '/intprep',
     category: 'AI',
-    sourcePrivate: true
+    sourcePrivate: true,
+    image: '/projects/intprep/dashboard.png'
   },
   {
     id: 'nexpend',

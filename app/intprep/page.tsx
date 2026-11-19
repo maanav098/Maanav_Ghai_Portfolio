@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import { ArrowLeft, ArrowUpRight, Github } from 'lucide-react'
+import { IntPrepGallery } from '@/components/IntPrepGallery'
 
 export const metadata: Metadata = {
   title: 'IntPrep Case Study | Maanav Ghai',
@@ -73,9 +75,39 @@ export default function IntPrepCaseStudy() {
               Repository <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
             </a>
           </div>
+
+          {/* Hero Product Preview Mockup */}
+          <div className="relative mt-12 overflow-hidden rounded-[24px] border border-white/15 bg-slate-950 shadow-2xl">
+            <div className="flex items-center justify-between border-b border-white/10 bg-slate-900/90 px-4 py-2.5 backdrop-blur-md">
+              <div className="flex items-center gap-2">
+                <span className="h-3 w-3 rounded-full bg-rose-500/80" />
+                <span className="h-3 w-3 rounded-full bg-amber-500/80" />
+                <span className="h-3 w-3 rounded-full bg-emerald-500/80" />
+                <span className="ml-2 font-mono text-xs text-slate-400">intprep.behavior.systems</span>
+              </div>
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-400/30 bg-emerald-500/10 px-3 py-0.5 text-xs font-medium text-emerald-300">
+                <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+                Live Application
+              </span>
+            </div>
+            <div className="relative aspect-[16/9] w-full overflow-hidden bg-slate-950">
+              <Image
+                src="/projects/intprep/dashboard.png"
+                alt="IntPrep Production Candidate Dashboard"
+                width={1280}
+                height={720}
+                priority
+                className="h-full w-full object-cover object-top"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#061126] via-transparent to-transparent opacity-60" />
+            </div>
+          </div>
         </header>
 
-        <section className="mt-14">
+        {/* Interactive Feature Walkthrough */}
+        <IntPrepGallery />
+
+        <section className="mt-16">
           <h2 className="section-title">How the AI interview flow works</h2>
           <figure className="panel mt-6 rounded-[24px] p-5 sm:p-7" aria-label="IntPrep architecture flow">
             <ol className="grid gap-3 md:grid-cols-5">
