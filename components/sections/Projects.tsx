@@ -96,6 +96,11 @@ export function Projects() {
                           <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
                         </a>
                       )}
+                      {project.sourcePrivate && (
+                        <span className="inline-flex min-h-11 items-center rounded-full border border-white/15 px-4 py-2 text-xs text-slate-400">
+                          Source private
+                        </span>
+                      )}
                       {project.caseStudy && (
                         <a href={project.caseStudy} className="secondary-button min-h-11 px-4 py-2 text-sm">
                           <FileText aria-hidden="true" className="h-4 w-4" />

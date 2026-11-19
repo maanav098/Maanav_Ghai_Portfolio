@@ -70,6 +70,7 @@ export interface Project {
   image?: string
   category?: string
   featured?: boolean
+  sourcePrivate?: boolean
 }
 
 export interface SkillGroup {
@@ -285,10 +286,10 @@ export const projects: Project[] = [
       'Includes candidate practice and recruiter screening workflows.'
     ],
     tech: ['FastAPI', 'React', 'TypeScript', 'Docker', 'AWS EC2', 'WorkOS', 'Whisper'],
-    github: 'https://github.com/maanav098/Intprep.co',
     demo: 'https://intprep.behavior.systems',
     caseStudy: '/intprep',
-    category: 'AI'
+    category: 'AI',
+    sourcePrivate: true
   },
   {
     id: 'nexpend',

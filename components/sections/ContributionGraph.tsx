@@ -3,12 +3,6 @@ import { profile } from '@/lib/data'
 
 const repositories = [
   {
-    name: 'IntPrep',
-    description: 'Resume-aware AI interview practice and recruiter screening.',
-    href: 'https://github.com/maanav098/Intprep.co',
-    language: 'FastAPI · React · TypeScript',
-  },
-  {
     name: 'RouteMate',
     description: 'A sales-team API with GPS-checked visits and idempotent orders.',
     href: 'https://github.com/maanav098/routemate',
@@ -25,6 +19,12 @@ const repositories = [
     description: 'A Gemini-powered multimodal assistant.',
     href: 'https://github.com/maanav098/SmartSolve-AI',
     language: 'React · TypeScript · Gemini',
+  },
+  {
+    name: 'Hybrid Fake News Detection',
+    description: 'An English and Hindi classification project using multilingual embeddings.',
+    href: 'https://github.com/maanav098/Fake-News-Detection-English_Hindi',
+    language: 'Python · MiniLM · LightGBM',
   },
 ]
 
