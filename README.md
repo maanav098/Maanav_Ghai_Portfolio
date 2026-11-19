@@ -153,10 +153,8 @@ Edit `lib/data.ts` to update:
 2. Add to navigation in `Navigation.tsx`
 3. Include in main page `app/page.tsx`
 
-### GitHub Contributions
-The contribution graph reads the latest year of activity from the GitHub profile configured in `lib/data.ts`. It refreshes when the page opens, when the tab becomes visible again, and every 30 minutes while the page is open.
-
-By default, it displays contributions GitHub makes publicly available. To include private-repository contribution counts, add a GitHub token with `read:user` access as the `GITHUB_TOKEN` environment variable in the hosting provider (for example, Vercel project settings). Keep the token server-side; do not prefix it with `NEXT_PUBLIC_` or commit it to the repository.
+### GitHub projects
+The GitHub section is a static list of selected public repositories. It does not depend on a runtime GitHub API or server-side token.
 
 ## 🎯 Key Sections
 
@@ -185,6 +183,20 @@ By default, it displays contributions GitHub makes publicly available. To includ
 - Direct contact methods
 - Professional availability status
 - Location and remote work preferences
+- Contact form sends messages through SMTP; it reports an error instead of claiming success when email is not configured
+
+### Contact form email
+Set these variables in `.env.local` for local development and in the deployment environment (for example, Vercel project settings):
+
+```text
+SMTP_HOST=
+SMTP_PORT=587
+SMTP_USER=
+SMTP_PASSWORD=
+SMTP_SECURE=false
+```
+
+The form sends to the email address configured in `lib/data.ts`. Keep credentials server-side and never prefix them with `NEXT_PUBLIC_`.
 
 ## 🔧 Development
 
@@ -230,17 +242,14 @@ By default, it displays contributions GitHub makes publicly available. To includ
 ## 🔍 SEO Features
 
 - **Meta Tags**: Comprehensive title, description, and keywords
-- **Open Graph**: Social media optimization
+- **Open Graph**: Generated 1200 × 630 social preview image
 - **Twitter Cards**: Twitter-specific meta tags
-- **Structured Data**: JSON-LD Person schema (ready to add)
+- **Sitemap and robots**: Generated from the canonical site URL
 - **Performance**: Core Web Vitals optimization
 
-## 📈 Analytics (Optional)
+## 📈 Analytics
 
-The portfolio is ready for analytics integration:
-- **Vercel Analytics**: Built-in performance monitoring
-- **Google Analytics**: Easy to add tracking code
-- **Privacy Focused**: No unnecessary tracking by default
+Vercel Web Analytics is included. Enable Web Analytics for the project in the Vercel dashboard to view visitor data.
 
 ## 🤝 Contributing
 

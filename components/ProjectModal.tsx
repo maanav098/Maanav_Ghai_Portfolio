@@ -54,61 +54,61 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
             </div>
 
             <div className="space-y-6 p-6 sm:p-7">
-              <div className="grid gap-5 md:grid-cols-2">
-                <div className="rounded-[18px] border border-white/8 bg-white/[0.02] p-4 sm:p-5">
-                  <h3 className="mb-4 text-xl font-semibold text-white">
-                    Problem
-                  </h3>
-                  <p className="text-sm leading-7 text-slate-300 sm:text-base">
-                    {project.problem}
-                  </p>
-                </div>
-                <div className="rounded-[18px] border border-white/8 bg-white/[0.02] p-4 sm:p-5">
-                  <h3 className="mb-4 text-xl font-semibold text-white">
-                    Solution
-                  </h3>
-                  <p className="text-sm leading-7 text-slate-300 sm:text-base">
-                    {project.solution}
-                  </p>
-                </div>
-              </div>
+              <p className="text-sm leading-7 text-slate-300 sm:text-base">
+                {project.description}
+              </p>
 
-              <div>
-                <h3 className="mb-4 text-xl font-semibold text-white">
-                  My Role
-                </h3>
-                <p className="mb-5 text-sm leading-7 text-slate-300 sm:text-base">
-                  {project.role}
-                </p>
-                
-                <h4 className="mb-4 text-lg font-semibold text-white">
-                  Key Impact:
-                </h4>
-                <ul className="space-y-2.5">
-                  {project.impact.map((item, i) => (
-                    <li key={i} className="flex items-start gap-3 text-sm text-slate-300 sm:text-base">
-                      <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-blue-400" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div>
-                <h3 className="mb-4 text-xl font-semibold text-white">
-                  Technologies Used
-                </h3>
-                <div className="flex flex-wrap gap-3">
-                  {project.tech.map((tech) => (
-                    <span
-                      key={tech}
-                      className="tag"
-                    >
-                      {tech}
-                    </span>
-                  ))}
+              {(project.problem || project.solution) && (
+                <div className="grid gap-5 md:grid-cols-2">
+                  {project.problem && (
+                    <div className="rounded-[18px] border border-white/8 bg-white/[0.02] p-4 sm:p-5">
+                      <h3 className="mb-4 text-xl font-semibold text-white">Problem</h3>
+                      <p className="text-sm leading-7 text-slate-300 sm:text-base">{project.problem}</p>
+                    </div>
+                  )}
+                  {project.solution && (
+                    <div className="rounded-[18px] border border-white/8 bg-white/[0.02] p-4 sm:p-5">
+                      <h3 className="mb-4 text-xl font-semibold text-white">Solution</h3>
+                      <p className="text-sm leading-7 text-slate-300 sm:text-base">{project.solution}</p>
+                    </div>
+                  )}
                 </div>
-              </div>
+              )}
+
+              {(project.role || project.impact?.length) && (
+                <div>
+                  {project.role && (
+                    <>
+                      <h3 className="mb-4 text-xl font-semibold text-white">My Role</h3>
+                      <p className="mb-5 text-sm leading-7 text-slate-300 sm:text-base">{project.role}</p>
+                    </>
+                  )}
+                  {project.impact && project.impact.length > 0 && (
+                    <>
+                      <h4 className="mb-4 text-lg font-semibold text-white">Key Impact:</h4>
+                      <ul className="space-y-2.5">
+                        {project.impact.map((item) => (
+                          <li key={item} className="flex items-start gap-3 text-sm text-slate-300 sm:text-base">
+                            <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-blue-400" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  )}
+                </div>
+              )}
+
+              {project.tech.length > 0 && (
+                <div>
+                  <h3 className="mb-4 text-xl font-semibold text-white">Technologies Used</h3>
+                  <div className="flex flex-wrap gap-3">
+                    {project.tech.map((tech) => (
+                      <span key={tech} className="tag">{tech}</span>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               <div className="flex flex-wrap gap-3 border-t border-white/8 pt-5">
                 {project.github && (

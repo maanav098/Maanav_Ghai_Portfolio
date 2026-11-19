@@ -46,7 +46,7 @@ export function ProjectTile({ project, index, onClick }: ProjectTileProps) {
         </p>
 
         <p className="rounded-lg border border-white/16 bg-black/15 px-3 py-2 text-xs leading-6 text-slate-200 sm:text-sm">
-          {project.impact[0]}
+          {project.impact?.[0] ?? 'Open the repository to explore the project.'}
         </p>
 
         <div className="flex flex-wrap gap-2 pt-1">
@@ -61,7 +61,7 @@ export function ProjectTile({ project, index, onClick }: ProjectTileProps) {
         </div>
 
         <div className="pt-0.5 text-sm font-medium text-cyan-200 transition-colors duration-300 group-hover:text-cyan-100">
-          Explore case study
+          Explore project
         </div>
       </div>
     </motion.button>

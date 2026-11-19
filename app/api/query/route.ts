@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { mkdir, readFile, writeFile } from 'fs/promises'
-import { existsSync } from 'fs'
-import { join } from 'path'
+import nodemailer from 'nodemailer'
+import { profile } from '@/lib/data'
 
 interface QueryPayload {
   name?: string
@@ -11,87 +10,75 @@ interface QueryPayload {
   query?: string
 }
 
-const dataDir = join(process.cwd(), 'data')
-const queriesFile = join(dataDir, 'queries.json')
-
-async function readQueriesFile() {
-  if (!existsSync(queriesFile)) {
-    return []
-  }
-
-  const raw = await readFile(queriesFile, 'utf8')
-  if (!raw.trim()) {
-    return []
-  }
-
-  try {
-    return JSON.parse(raw)
-  } catch (error) {
-    console.warn('Corrupted queries.json detected, reinitialising file')
-    return []
-  }
-}
-
-async function appendQuery(entry: unknown) {
-  if (!existsSync(dataDir)) {
-    await mkdir(dataDir, { recursive: true })
-  }
-
-  const entries = await readQueriesFile()
-  entries.push(entry)
-  await writeFile(queriesFile, JSON.stringify(entries, null, 2))
-}
-
 function validateEmail(email: string) {
-  return /.+@.+\..+/.test(email)
-}
-
-export async function GET() {
-  try {
-    const entries = await readQueriesFile()
-    return NextResponse.json({ data: entries })
-  } catch (error) {
-    console.error('Failed to read queries file', error)
-    return NextResponse.json({ error: 'Unable to load queries' }, { status: 500 })
-  }
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
 }
 
 export async function POST(request: NextRequest) {
+  let body: QueryPayload
   try {
-    const body = (await request.json()) as QueryPayload
-    const name = body.name?.trim()
-    const email = body.email?.trim()?.toLowerCase()
-    const message = (body.message ?? body.query)?.toString().trim()
-    const whatsapp = body.whatsapp?.trim() || 'Not provided'
+    body = (await request.json()) as QueryPayload
+  } catch {
+    return NextResponse.json({ error: 'Please submit a valid message.' }, { status: 400 })
+  }
 
-    if (!name) {
-      return NextResponse.json({ error: 'Name is required' }, { status: 400 })
-    }
+  const name = body.name?.trim()
+  const email = body.email?.trim()?.toLowerCase()
+  const message = (body.message ?? body.query)?.toString().trim()
+  const whatsapp = body.whatsapp?.trim() || 'Not provided'
 
-    if (!email || !validateEmail(email)) {
-      return NextResponse.json({ error: 'Valid email is required' }, { status: 400 })
-    }
+  if (!name) {
+    return NextResponse.json({ error: 'Name is required' }, { status: 400 })
+  }
 
-    if (!message) {
-      return NextResponse.json({ error: 'Message is required' }, { status: 400 })
-    }
+  if (!email || !validateEmail(email)) {
+    return NextResponse.json({ error: 'Valid email is required' }, { status: 400 })
+  }
 
-    const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? request.ip ?? 'Unknown'
+  if (!message) {
+    return NextResponse.json({ error: 'Message is required' }, { status: 400 })
+  }
 
-    const entry = {
-      timestamp: new Date().toISOString(),
-      name,
-      email,
-      whatsapp,
-      message,
-      ip,
-    }
+  const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASSWORD, SMTP_SECURE } = process.env
+  if (!SMTP_HOST || !SMTP_USER || !SMTP_PASSWORD) {
+    console.error('Contact form email is unavailable because SMTP is not configured.')
+    return NextResponse.json(
+      { error: `Contact form email is not configured. Please email ${profile.email} directly.` },
+      { status: 503 },
+    )
+  }
 
-    await appendQuery(entry)
+  try {
+    const transporter = nodemailer.createTransport({
+      host: SMTP_HOST,
+      port: Number(SMTP_PORT || 587),
+      secure: SMTP_SECURE === 'true',
+      auth: {
+        user: SMTP_USER,
+        pass: SMTP_PASSWORD,
+      },
+    })
 
-    return NextResponse.json({ message: 'Query submitted successfully' })
+    await transporter.sendMail({
+      from: SMTP_USER,
+      to: profile.email,
+      replyTo: email,
+      subject: `Portfolio inquiry from ${name}`,
+      text: [
+        `Name: ${name}`,
+        `Email: ${email}`,
+        `WhatsApp: ${whatsapp}`,
+        '',
+        message,
+      ].join('\n'),
+    })
+
+    return NextResponse.json({ message: 'Message sent successfully.' })
   } catch (error) {
-    console.error('Failed to save query', error)
-    return NextResponse.json({ error: 'Something went wrong while saving your query' }, { status: 500 })
+    console.error('Failed to send contact form email', error)
+    return NextResponse.json(
+      { error: 'Unable to send your message right now. Please email directly instead.' },
+      { status: 502 },
+    )
   }
 }

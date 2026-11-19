@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Quote } from 'lucide-react'
+import { ArrowUpRight, Linkedin, Quote } from 'lucide-react'
 import { recruiterSignals, profile } from '@/lib/data'
 import { SectionHeader, fadeUp, stagger } from '@/components/sections/SectionHeader'
 
@@ -34,6 +34,16 @@ export function Testimonials() {
             </motion.div>
           ))}
         </motion.div>
+        <a
+          href={`${profile.social.linkedin}/details/recommendations/`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="secondary-button mt-5 min-h-11 px-4 py-2 text-sm"
+        >
+          <Linkedin aria-hidden="true" className="h-4 w-4" />
+          LinkedIn recommendations
+          <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
+        </a>
       </div>
     </section>
   )

@@ -44,6 +44,9 @@ export function Hero() {
               <span className="glass-chip hidden items-center gap-2 rounded-full border px-4 py-1.5 text-xs font-medium text-slate-100 sm:inline-flex sm:text-sm">
                 Premium product execution
               </span>
+              <span className="glass-chip inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-xs font-medium text-slate-100 sm:text-sm">
+                2026 CSE graduate · Available immediately · India / UAE
+              </span>
             </motion.div>
 
             <motion.h1

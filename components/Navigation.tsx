@@ -154,7 +154,7 @@ export function Navigation() {
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
                 className={cn(
-                  'rounded-full px-3 py-1.5 text-xs font-medium transition-all duration-200',
+                  'min-h-11 rounded-full px-3 py-2 text-xs font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300',
                   activeSection === item.id
                     ? 'bg-gradient-to-r from-cyan-400/25 to-amber-300/20 text-white shadow-[0_0_0_1px_rgba(34,211,238,0.3)_inset]'
                     : 'text-slate-300 hover:bg-white/10 hover:text-white'
@@ -169,16 +169,18 @@ export function Navigation() {
             <a
               href={profile.resumeUrl}
               download="Maanav_Ghai_Resume.pdf"
-              className="hidden items-center gap-2 rounded-full border border-cyan-300/35 bg-cyan-400/10 px-3 py-1.5 text-xs font-medium text-cyan-100 transition-all duration-300 hover:border-cyan-300/50 hover:bg-cyan-400/16 md:inline-flex"
+              className="hidden min-h-11 items-center gap-2 rounded-full border border-cyan-300/35 bg-cyan-400/10 px-3 py-1.5 text-xs font-medium text-cyan-100 transition-all duration-300 hover:border-cyan-300/50 hover:bg-cyan-400/16 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 md:inline-flex"
             >
-              Resume
+              Download Resume
               <ArrowUpRight className="h-4 w-4" />
             </a>
 
             <button
-              className="rounded-full border border-white/10 bg-white/10 p-2 text-slate-200 transition-colors duration-200 hover:text-white xl:hidden"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle mobile menu"
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-navigation"
+              className="min-h-11 min-w-11 rounded-full border border-white/10 bg-white/10 p-2 text-slate-200 transition-colors duration-200 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 xl:hidden"
             >
               {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
@@ -190,6 +192,7 @@ export function Navigation() {
             'overflow-hidden transition-all duration-300 ease-in-out xl:hidden',
             isMobileMenuOpen ? 'max-h-[540px] opacity-100' : 'max-h-0 opacity-0'
           )}
+          id="mobile-navigation"
         >
           <div className="panel mb-4 space-y-2 border-white/10 p-4">
             {navItems.map((item) => (
@@ -209,7 +212,7 @@ export function Navigation() {
             <a
               href={profile.resumeUrl}
               download="Maanav_Ghai_Resume.pdf"
-              className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-cyan-500 to-sky-500 px-4 py-3 text-sm font-semibold text-white shadow-[0_16px_40px_rgba(8,145,178,0.35)]"
+              className="mt-2 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-cyan-500 to-sky-500 px-4 py-3 text-sm font-semibold text-white shadow-[0_16px_40px_rgba(8,145,178,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
             >
               Download Resume
               <ArrowUpRight className="h-4 w-4" />

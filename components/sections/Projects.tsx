@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArrowUpRight, Github, Sparkles } from 'lucide-react'
+import { ArrowUpRight, ExternalLink, FileText, Github, Sparkles } from 'lucide-react'
 import { projects } from '@/lib/data'
 import { SectionHeader } from '@/components/sections/SectionHeader'
 import { TiltCard } from '@/components/ui/TiltCard'
@@ -16,25 +16,24 @@ export function Projects() {
     <div className="section-inner">
       <SectionHeader
         kicker="Projects"
-        title="Featured work, shipped end to end."
-        copy="Two production-minded builds that show how I connect AI capability to real user workflows."
+        title="Projects built around real workflows."
+        copy="A selected portfolio of AI, backend, and machine-learning work. Live links are included where a public deployment exists."
       />
 
-      <div className="grid gap-16 sm:gap-20">
+      <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
         {projects.map((project, index) => {
-          const reversed = index % 2 === 1
           return (
             <motion.article
               key={project.id}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-15% 0px' }}
-              transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-              className={`grid gap-8 lg:grid-cols-2 lg:items-center ${reversed ? 'lg:[&>*:first-child]:order-2' : ''}`}
+              viewport={{ once: true, margin: '-10% 0px' }}
+              transition={{ duration: 0.55, delay: (index % 3) * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              className="flex h-full flex-col"
             >
-              <TiltCard max={5} className="relative overflow-hidden rounded-[28px] border border-white/12 p-1">
+              <TiltCard max={4} className="relative h-full overflow-hidden rounded-[24px] border border-white/12 p-1">
                 <div
-                  className="flex aspect-[4/3] w-full flex-col justify-between rounded-[24px] p-6 sm:p-8"
+                  className="flex h-full min-h-[270px] flex-col rounded-[20px] p-5 sm:p-6"
                   style={{ background: gradients[index % gradients.length] }}
                 >
                   <div className="flex items-center justify-between">
@@ -44,56 +43,69 @@ export function Projects() {
                     <Sparkles className="h-5 w-5 text-cyan-200/80" />
                   </div>
 
-                  <div className="flex flex-wrap gap-2">
-                    {project.tech.slice(0, 4).map((tech) => (
-                      <span
-                        key={tech}
-                        className="rounded-full border border-white/15 bg-black/25 px-3 py-1 text-[11px] font-medium text-slate-100 backdrop-blur-sm"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+                  <div className="mt-8 flex flex-1 flex-col">
+                    <h3 className="font-display text-2xl font-semibold tracking-[-0.04em] text-white">
+                      {project.title}
+                    </h3>
+                    <p className="mt-2 text-xs font-medium uppercase tracking-[0.14em] text-cyan-200/90">
+                      {project.subtitle}
+                    </p>
+                    <p className="mt-4 flex-1 text-sm leading-7 text-slate-200">
+                      {project.description}
+                    </p>
+
+                    <dl className="mt-5 grid gap-2.5 text-xs leading-5 text-slate-200">
+                      {[
+                        ['Problem', project.problem],
+                        ['Solution', project.solution],
+                        ['Stack', project.tech.join(' · ')],
+                        ['Result', project.impact?.[0]],
+                      ].map(([label, content]) => content ? (
+                        <div key={label} className="grid gap-1 rounded-xl border border-white/10 bg-black/20 p-3 sm:grid-cols-[4.5rem_1fr] sm:gap-3">
+                          <dt className="font-semibold uppercase tracking-[0.12em] text-cyan-100">{label}</dt>
+                          <dd>{content}</dd>
+                        </div>
+                      ) : null)}
+                    </dl>
+
+                    <div className="mt-5 flex flex-wrap gap-2">
+                      {project.demo ? (
+                        <a
+                          href={project.demo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="primary-button min-h-11 px-4 py-2 text-sm"
+                        >
+                          <ExternalLink aria-hidden="true" className="h-4 w-4" />
+                          Live demo
+                        </a>
+                      ) : (
+                        <span className="inline-flex min-h-11 items-center rounded-full border border-white/15 px-4 py-2 text-xs text-slate-400">
+                          No public live demo
+                        </span>
+                      )}
+                      {project.github && (
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="secondary-button min-h-11 px-4 py-2 text-sm"
+                        >
+                          <Github aria-hidden="true" className="h-4 w-4" />
+                          View repository
+                          <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
+                        </a>
+                      )}
+                      {project.caseStudy && (
+                        <a href={project.caseStudy} className="secondary-button min-h-11 px-4 py-2 text-sm">
+                          <FileText aria-hidden="true" className="h-4 w-4" />
+                          Case study
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
               </TiltCard>
-
-              <div>
-                <h3 className="display-spotlight">{project.title}</h3>
-                <p className="mt-2 text-sm font-medium uppercase tracking-[0.14em] text-cyan-200/90 sm:text-base">
-                  {project.subtitle}
-                </p>
-                <p className="mt-5 text-sm leading-8 text-slate-200 sm:text-base">{project.description}</p>
-
-                <div className="mt-6 grid gap-2">
-                  {project.impact.slice(0, 3).map((point) => (
-                    <div key={point} className="flex items-start gap-2 text-sm leading-7 text-slate-200">
-                      <span className="mt-2.5 h-1.5 w-1.5 flex-none rounded-full bg-cyan-300" />
-                      {point}
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {project.tech.map((tech) => (
-                    <span key={tech} className="tag">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                {project.github && (
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="secondary-button mt-7 inline-flex"
-                  >
-                    <Github className="h-5 w-5" />
-                    View Repository
-                    <ArrowUpRight className="h-4 w-4" />
-                  </a>
-                )}
-              </div>
             </motion.article>
           )
         })}

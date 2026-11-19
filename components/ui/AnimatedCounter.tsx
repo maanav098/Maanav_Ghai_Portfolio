@@ -8,7 +8,7 @@ interface AnimatedCounterProps {
   className?: string
 }
 
-// Splits values like "1M+", "95%", "8" into an animatable number plus a static suffix.
+// Splits values like "1M+", "200+", and "12" into an animatable number plus a static suffix.
 function parseValue(value: string) {
   const match = value.match(/^([\d.]+)(.*)$/)
   if (!match) {
@@ -20,7 +20,7 @@ function parseValue(value: string) {
 export function AnimatedCounter({ value, className }: AnimatedCounterProps) {
   const ref = useRef<HTMLSpanElement>(null)
   const isInView = useInView(ref, { once: true, margin: '-10% 0px' })
-  const [display, setDisplay] = useState('0')
+  const [display, setDisplay] = useState(value)
   const { number, suffix } = parseValue(value)
 
   useEffect(() => {
@@ -33,11 +33,12 @@ export function AnimatedCounter({ value, className }: AnimatedCounterProps) {
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (prefersReducedMotion) {
-      setDisplay(`${number}${suffix}`)
+      setDisplay(value)
       return
     }
 
     const isDecimal = value.includes('.')
+    setDisplay(`0${suffix}`)
     const controls = animate(0, number, {
       duration: 1.4,
       ease: [0.22, 1, 0.36, 1],
@@ -50,7 +51,7 @@ export function AnimatedCounter({ value, className }: AnimatedCounterProps) {
   }, [isInView, number, suffix, value])
 
   return (
-    <motion.span ref={ref} className={className}>
+    <motion.span ref={ref} className={className} aria-label={value}>
       {display}
     </motion.span>
   )

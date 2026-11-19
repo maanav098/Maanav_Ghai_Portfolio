@@ -2,7 +2,7 @@
 
 import { useState, type FormEvent } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowUpRight, CheckCircle2, Download, Github, Linkedin, Mail, MapPin, XCircle } from 'lucide-react'
+import { ArrowUpRight, CheckCircle2, Download, Github, Linkedin, Mail, MapPin, MessageCircle, Phone, XCircle } from 'lucide-react'
 import { profile } from '@/lib/data'
 import { SectionHeader, fadeUp, stagger } from '@/components/sections/SectionHeader'
 import { MagneticButton } from '@/components/ui/MagneticButton'
@@ -11,6 +11,8 @@ type SubmitState = 'idle' | 'loading' | 'success' | 'error'
 
 const quickLinks = [
   { label: profile.email, href: `mailto:${profile.email}`, icon: Mail },
+  { label: profile.phone ?? '', href: `tel:${profile.phone?.replace(/[^\d+]/g, '') ?? ''}`, icon: Phone },
+  { label: `WhatsApp · ${profile.phone ?? ''}`, href: `https://wa.me/${profile.phone?.replace(/\D/g, '') ?? ''}`, icon: MessageCircle },
   { label: 'GitHub', href: profile.social.github, icon: Github },
   { label: 'LinkedIn', href: profile.social.linkedin, icon: Linkedin },
 ]
@@ -76,7 +78,7 @@ export function Contact() {
 
             <div className="mt-5 flex items-center gap-2 text-sm text-slate-300">
               <MapPin className="h-4 w-4 text-cyan-300/80" />
-              {profile.location}
+              {profile.location} · Open to relocate to India / UAE
             </div>
 
             <div className="mt-5 grid gap-2">
@@ -173,6 +175,8 @@ export function Contact() {
                 <motion.p
                   initial={{ opacity: 0, y: 6 }}
                   animate={{ opacity: 1, y: 0 }}
+                  role="status"
+                  aria-live="polite"
                   className="flex items-center gap-2 rounded-xl border border-emerald-400/30 bg-emerald-400/10 px-4 py-3 text-sm text-emerald-200"
                 >
                   <CheckCircle2 className="h-4 w-4" />
@@ -184,6 +188,7 @@ export function Contact() {
                 <motion.p
                   initial={{ opacity: 0, y: 6 }}
                   animate={{ opacity: 1, y: 0 }}
+                  role="alert"
                   className="flex items-center gap-2 rounded-xl border border-rose-400/30 bg-rose-400/10 px-4 py-3 text-sm text-rose-200"
                 >
                   <XCircle className="h-4 w-4" />

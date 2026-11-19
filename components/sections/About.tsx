@@ -6,9 +6,9 @@ import { fadeUp, stagger } from '@/components/sections/SectionHeader'
 import { TiltCard } from '@/components/ui/TiltCard'
 
 const highlights = [
-  { value: '8', label: 'Microservices Built / Led' },
-  { value: '95%', label: 'Reporting Time Reduced' },
-  { value: '1M+', label: 'Records Handled' },
+  { value: '12', label: 'Company Clusters' },
+  { value: '~1M', label: 'Financial Records' },
+  { value: '200+', label: 'DSA Problems Solved' },
 ]
 
 const bring = [

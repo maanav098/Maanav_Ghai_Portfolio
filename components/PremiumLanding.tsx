@@ -9,10 +9,12 @@ import { Skills } from '@/components/sections/Skills'
 import { Testimonials } from '@/components/sections/Testimonials'
 import { Contact } from '@/components/sections/Contact'
 import { ContributionGraph } from '@/components/sections/ContributionGraph'
+import { CertificationsSection } from '@/components/CertificationsSection'
+import { LeadershipSection } from '@/components/LeadershipSection'
 
 export function PremiumLanding() {
   return (
-    <main className="relative">
+    <div className="relative">
       <CursorSpotlight />
 
       <Hero />
@@ -36,10 +38,16 @@ export function PremiumLanding() {
       <Skills />
 
       <div className="section-divider" />
+      <CertificationsSection />
+
+      <div className="section-divider" />
+      <LeadershipSection />
+
+      <div className="section-divider" />
       <Testimonials />
 
       <div className="section-divider" />
       <Contact />
-    </main>
+    </div>
   )
 }
